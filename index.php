@@ -25,7 +25,7 @@
     <div class="box-content">
         <div class="text-content">
             <h1>Sistem Pendukung Keputusan <span>Pemilihan Guru Terbaik</span></h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum facere quos eius voluptatem tempora voluptas.</p>
+            <p>Website ini merupakan sebuah sistem pendukung keputusan untuk menentukan pemilihan guru terbaik dengan metode <span>Analytical Hierarchy Process.</span></p>
         </div>
         <div class="image-content">
             <img src="assets/images/Decision.png" alt="Decision">
