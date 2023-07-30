@@ -19,6 +19,7 @@
 body{
     background-color: var(--colorbg);
     height: 100vh;
+    overflow: hidden;
 }
 
 /* Navbar */
@@ -33,7 +34,10 @@ nav{
 nav .logo{
     font-size: 30px;
     font-weight: bold;
-    color: var(--colortitle);
+    color: var(--colorbg);
+    cursor: default;
+    background-color: var(--colortitle);
+    border-radius: 50%;
 }
 
 nav .links a{
@@ -41,6 +45,10 @@ nav .links a{
     margin-right: 50px;
     font-size: 18px;
     font-weight: 500;
+}
+
+nav .links a:nth-child(3){
+    margin-right: 0;
 }
 
 nav .links a:hover{
@@ -53,15 +61,29 @@ nav .sign-in a{
     border: 2px solid var(--colortitle);
     padding: 10px 20px;
     border-radius: 30px;
+    font-weight: 500;
 }
 
 nav .sign-in a:hover{
     color: var(--colorbg);
     background-color: var(--colortitle);
+    box-shadow: 0 2px 10px var(--secondcolor);
 }
 
 nav .links .active{
     color: var(--colortitle);
+}
+
+/* container content */
+.container-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 130px;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
 }
 
 /* Box Content */
@@ -69,7 +91,16 @@ nav .links .active{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 130px;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    opacity: 0;
+    transition: top 1s ease, opacity 1s ease;
+}
+
+.slide{
+    opacity: 1;
+    top: 0;
 }
 
 .box-content .text-content{
@@ -85,6 +116,11 @@ nav .links .active{
     color: var(--colortitle);
 }
 
+.box-content .text-content p{
+    text-align: justify;
+    width: 88%;
+}
+
 .box-content .text-content p span{
     font-weight: bold;
     font-style: italic;
@@ -92,4 +128,43 @@ nav .links .active{
 
 .box-content .image-content img{
     width: 500px;
+    position: relative;
+    bottom: 0;
+    animation: updown 3s linear infinite;
+}
+
+@keyframes updown{
+    50%{
+        position: relative;
+        bottom: 20px;
+    }
+}
+
+/* Page ahp */
+.content-ahp{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 130px 0 130px;
+}
+
+.content-ahp .text-content-ahp{
+    margin-top: 20px;
+    width: 75%;
+    padding: 30px;
+    background-color: rgb(230, 231, 236);
+    border-radius: 20px;
+}
+
+.content-ahp .text-content-ahp h1{
+    font-size: 30px;
+    margin-bottom: 30px;
+    border: var(--borderset);
+}
+
+.content-ahp .text-content-ahp p{
+    text-align: justify;
+    margin-bottom: 20px;
+    text-indent: 30px;
 }
