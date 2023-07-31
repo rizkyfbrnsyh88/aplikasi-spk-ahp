@@ -22,13 +22,21 @@ body{
     overflow: hidden;
 }
 
+/* bg */
+.bg img{
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+}
+
 /* Navbar */
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 100px 0 100px;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 nav .logo{
@@ -84,6 +92,7 @@ nav .links .active{
     overflow: hidden;
     position: relative;
     height: 100%;
+    margin-top: 30px;
 }
 
 /* Box Content */
@@ -144,27 +153,48 @@ nav .links .active{
 .content-ahp{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: left;
     flex-direction: column;
-    margin: 20px 130px 0 130px;
+    margin: 50px 130px 0 130px;
+}
+
+.content-ahp .judul{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.content-ahp .judul h1{
+    font-size: 24px;
+    font-style: italic;
+}
+
+.kotak{
+    width: 25px;
+    height: 25px;
+    background-color: var(--colortitle);
+    margin: 0 20px;
 }
 
 .content-ahp .text-content-ahp{
     margin-top: 20px;
-    width: 75%;
     padding: 30px;
-    background-color: rgb(230, 231, 236);
+    background-color: rgba(239, 240, 243, 0.5);
+    box-shadow: 0 3px 5px black;
     border-radius: 20px;
 }
 
-.content-ahp .text-content-ahp h1{
-    font-size: 30px;
-    margin-bottom: 30px;
-    border: var(--borderset);
+.content-ahp .text-content-ahp span{
+    font-weight: bold;
+    font-style: italic;
 }
 
 .content-ahp .text-content-ahp p{
     text-align: justify;
-    margin-bottom: 20px;
     text-indent: 30px;
 }
+
+.content-ahp .text-content-ahp p:nth-child(1){
+    margin-bottom: 20px;
+}
+
