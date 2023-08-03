@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPK | Analytical Hierarchy Process</title>
+    <title>SPK | Home</title>
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
 
@@ -20,10 +20,10 @@
         <div class="links">
             <a href="index.php" class="active">Home</a>
             <a href="AnalyticalHierarchyProcess.php">Analytical Hierarchy Process</a>
-            <a href="about.php">About</a>
+            <a href="about.php">About School</a>
         </div>
         <div class="sign-in">
-            <a href="">Sign In</a>
+            <a href="views/login.php">Sign In</a>
         </div>
     </nav>
 
@@ -48,6 +48,7 @@
             </div>
         </div>
     </div>
+
 
 
 

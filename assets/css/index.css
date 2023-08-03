@@ -149,8 +149,8 @@ nav .links .active{
     }
 }
 
-/* Page ahp */
-.content-ahp{
+/* Page ahp dan about */
+.content-ahp, .content-about{
     display: flex;
     justify-content: flex-start;
     align-items: left;
@@ -158,13 +158,12 @@ nav .links .active{
     margin: 50px 130px 0 130px;
 }
 
-.content-ahp .judul{
-    margin-top: 30px;
+.content-ahp .judul, .content-about .judul{
     display: flex;
     align-items: center;
 }
 
-.content-ahp .judul h1{
+.content-ahp .judul h1, .content-about .judul h1{
     font-size: 24px;
     font-style: italic;
 }
@@ -198,3 +197,41 @@ nav .links .active{
     margin-bottom: 20px;
 }
 
+.content-ahp .text-content-ahp .img-school{
+    text-align: center;
+}
+
+.content-ahp .text-content-ahp .img-school img{
+    width: 300px;
+    border-radius: 20px;
+}
+
+.content-about .text-content-about{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    padding: 30px;
+    background-color: rgba(239, 240, 243, 0.5);
+    box-shadow: 0 3px 5px black;
+    border-radius: 20px;
+}
+
+.content-about .text-content-about .img-school{
+    margin-right: 30px;
+}
+
+.content-about .text-content-about .img-school img{
+    width: 300px;
+}
+
+.content-about .text-content-about .text-isi h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--colortitle);
+}
+
+.content-about .text-content-about .text-isi p{
+    text-align: justify;
+    text-indent: 30px;
+}

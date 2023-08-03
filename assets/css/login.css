@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root{
+    --colorbg: rgb(246, 241, 241);
+    --colortitle: rgb(25, 167, 206);
+    --colortext: rgb(0, 0, 0); 
+    --secondcolor: rgb(20, 108, 148);
+    --borderset: 1px solid black;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bg-login{
+    position: absolute;
+    z-index: -1;
+}
+
+.bg-login img{
+    width: 100%;
+    filter: blur(10px);
+}
+
+.container-login{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly ;
+    height: 100vh;
+    margin: 0 100px;
+}
+
+.container-login .welcome img{
+    width: 500px;
+}
+
+.container-login .kotak-login{
+    border-radius: 30px;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border: 2px solid #000;
+}
+
+.container-login .kotak-login .judul{
+    text-align: center;
+    padding: 50px;
+}
+
+.container-login .kotak-login .input{
+    padding: 0 50px 50px 50px;
+}
+
+input::placeholder{
+    color: #000;
+}
+
+.container-login .kotak-login .input input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    background: none;
+    padding: 7px 7px;
+    width: 100%;
+}
+
+.container-login .kotak-login .input .input-username{
+    margin-bottom: 20px;
+}
+
+.container-login .kotak-login .btn-login{
+    padding: 0 50px 50px 50px;
+    text-align: center;
+}
+
+.container-login .kotak-login .btn-login button{
+    outline: none;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--colortitle);
+    font-weight: bold;
+    color: var(--colorbg);
+    cursor: pointer;
+}
+
+.container-login .kotak-login .btn-login button:hover{
+    background-color: var(--secondcolor);
+}

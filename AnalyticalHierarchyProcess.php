@@ -20,7 +20,7 @@
         <div class="links">
             <a href="index.php">Home</a>
             <a href="AnalyticalHierarchyProcess.php" class="active">Analytical Hierarchy Process</a>
-            <a href="about.php">About</a>
+            <a href="about.php">About School</a>
         </div>
         <div class="sign-in">
             <a href="">Sign In</a>
