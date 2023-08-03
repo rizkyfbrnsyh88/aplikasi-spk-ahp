@@ -1,5 +1,5 @@
 <?php
-class Config
+class Koneksi
 {
     private $host = "localhost";
     private $db_name = "web-skripsi";

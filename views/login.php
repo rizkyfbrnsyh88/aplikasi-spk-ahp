@@ -1,3 +1,22 @@
+<?php
+include_once '../includes/koneksi.php';
+
+$config = new Koneksi();
+$db = $config->getConnection();
+
+if ($_POST) {
+    include_once 'includes/login.inc.php';
+    $login = new Login($db);
+    $login->userid = $_POST['username'];
+    $login->passid = md5($_POST['password']);
+    if ($login->login()) {
+        echo "<script>location.href='index.php'</script>";
+    } else {
+        $msg = "Username / Password tidak sesuai!";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +43,6 @@
                 </div>
                 <div class="input">
                     <div class="input-username">
-                        <label for="username"><i class="fa-solid fa-user" style="color: #185bcd;"></i></label>
                         <input type="text" name="username" id="username" placeholder="Username" autofocus>
                     </div>
                     <div class="input-password">
