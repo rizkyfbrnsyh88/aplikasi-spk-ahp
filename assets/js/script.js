@@ -28,3 +28,21 @@ function nextSlide() {
     // Tampilkan slide berikutnya
     showSlide(currentIndex);
 }
+
+const dropdownButton = document.getElementsByClassName(".btn-dropdown");
+const dropdownMenu = document.getElementsByClassName(".dropdown-menu");
+  
+    dropdownButton.addEventListener("click", function () {
+      if (dropdownMenu.style.display === "flex") {
+        dropdownMenu.style.display = "none";
+      } else {
+        dropdownMenu.style.display = "flex";
+      }
+    });
+  
+    // Tutup dropdown jika di luar dropdown diklik
+    document.addEventListener("click", function (event) {
+      if (!dropdownButton.contains(event.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });

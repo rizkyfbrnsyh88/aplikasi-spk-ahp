@@ -28,6 +28,7 @@ body{
     position: absolute;
     z-index: -1;
     bottom: 0;
+    opacity: .8;
 }
 
 /* Navbar */

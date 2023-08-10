@@ -1,0 +1,130 @@
+:root{
+    --colorbg: rgb(246, 241, 241);
+    --colortitle: rgb(25, 167, 206);
+    --colortext: rgb(0, 0, 0); 
+    --secondcolor: rgb(20, 108, 148);
+    --borderset: 1px solid black;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: var(--colorbg);
+    margin-left: 250px;
+}
+
+.content{
+    margin: 30px;
+    box-sizing: border-box;
+    height: 1000px;
+}
+
+/* Dashboard */
+.main-content .content .header{
+    padding: 50px;
+    box-sizing: border-box;
+    background-color: rgb(233, 233, 233);
+}
+
+.main-content .content .header h1{
+    font-size: 60px;
+}
+
+/* Nilai Preferensi */
+.main-content .content .navigasi{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(233, 233, 233);
+}
+
+.main-content .content .navigasi a{
+    color: var(--colortitle);
+    margin-right: 5px;
+}
+
+.main-content .content .navigasi span{
+    margin-right: 5px;
+}
+
+.main-content .content .judul-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.main-content .content .text-judul{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-content .content .text-judul .icon{
+    font-size: 30px;
+}
+
+.main-content .content .btn-judul{
+    display: flex;
+    align-items: center;
+}
+
+.main-content .content .btn-judul .btn-hapus button{
+    outline: none;
+    border: none;
+    background-color: var(--secondcolor);
+    padding: 15px 20px;
+    cursor: pointer;
+    color: var(--colorbg);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.main-content .content .btn-judul .btn-tambah button{
+    outline: none;
+    border: none;
+    background-color: var(--colortitle);
+    padding: 15px 20px;
+    cursor: pointer;
+    color: var(--colorbg);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+}
+
+.main-content .content .btn-judul button:hover{
+    background-color: red;
+    transition: all ease-in .1s;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+
+
+/* footer */
+.footer{
+    box-sizing: border-box;
+    margin: 20px;
+    text-align: center;
+}

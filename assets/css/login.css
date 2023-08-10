@@ -45,14 +45,16 @@ body{
 
 .container-login .kotak-login{
     border-radius: 30px;
-    width: 300px;
+    width: 400px;
     height: 400px;
     overflow: hidden;
-    border: 2px solid #000;
+    background-color: var(--colorbg);
+    box-shadow: 2px 2px 10px #000;
 }
 
 .container-login .kotak-login .judul{
     text-align: center;
+    color: var(--colortitle);
     padding: 50px;
 }
 

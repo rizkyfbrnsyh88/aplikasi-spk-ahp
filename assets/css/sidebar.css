@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root{
+    --colorbg: rgb(246, 241, 241);
+    --colortitle: rgb(25, 167, 206);
+    --colortext: rgb(0, 0, 0); 
+    --secondcolor: rgb(20, 108, 148);
+    --borderset: 1px solid black;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.sidebar{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--secondcolor);
+    box-sizing: border-box;
+}
+
+.sidebar .header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar .header .judul{
+    color: var(--colorbg);
+    margin: 10px;
+}
+
+.sidebar .header .img-header img{
+    width: 200px;
+}
+
+.sidebar .menus{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 20px 20px 20px;
+}
+
+.sidebar .menus .item-menu a{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    color: var(--colorbg);
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.sidebar .menus .item-menu .icon{
+    font-size: 24px;
+    margin-right: 12px;
+    color: var(--colorbg);
+}
+
+.sidebar .menus .item-menu .icon-dropdown{
+    color: var(--colorbg);
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+.sidebar .menus .item-menu a:hover{
+    transition: all ease-in .3s;
+    background-color: var(--colortitle);
+}
+
+.sidebar .menus .item-menu a:hover .icon-dropdown{
+    transform: rotate(-180deg);
+    transition: all ease-in .3s;
+}
+
+/* dropdown */
+.sidebar .menus .dropdown{
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .menus .dropdown .dropdown-menu{
+    display: none;
+    flex-direction: column;
+    margin-left: 10px;
+}
