@@ -1,19 +1,52 @@
 <?php
 include '../includes/sidebar.inc.php';
-?>
+
+include_once("../includes/user.inc.php");
+$pro = new User($db);
+$stmt = $pro->readAll();
+$count = $pro->countAll();
+
+if (isset($_POST['hapus-contengan'])) {
+    $imp = "('" . implode("','", array_values($_POST['checkbox'])) . "')";
+    $result = $pro->hapusell($imp);
+    if ($result) { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showSuccessToast();
+                setTimeout(function() {
+                    window.location.reload(1);
+                    history.go(0)
+                    location.href = location.href
+                }, 5000);
+            };
+        </script> <?php
+                } else { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showErrorToast();
+                setTimeout(function() {
+                    window.location.reload(1);
+                    history.go(0)
+                    location.href = location.href
+                }, 5000);
+            };
+        </script> <?php
+                }
+            }
+                    ?>
 
 <div class="main-content">
     <div class="content">
         <div class="navigasi">
             <a href="dashboard.php">Dashboard</a>
             <span>/</span>
-            <span>Nilai Preferensi</span>
+            <span>Pengguna</span>
         </div>
         <form method="post">
             <div class="judul-content">
                 <div class="text-judul">
-                    <i class="fa-solid fa-book icon"></i>
-                    <h2>Data Nilai Preferensi</h2>
+                    <i class="fa-solid fa-users icon"></i>
+                    <h2>Data Pengguna</h2>
                 </div>
                 <div class="btn-judul">
                     <div class="btn-hapus">
@@ -22,7 +55,7 @@ include '../includes/sidebar.inc.php';
                         </button>
                     </div>
                     <div class="btn-tambah">
-                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-nilai-preferensi.php'">
+                        <button type="button" name="tambah-data" onclick="location.href='tambah-user.php'">
                             <i class="fa-solid fa-clone"></i><span>Tambah Data</span>
                         </button>
                     </div>

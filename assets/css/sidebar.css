@@ -57,6 +57,7 @@
     flex-direction: column;
     justify-content: flex-start;
     margin: 0 20px 20px 20px;
+    font-size: 14px;
 }
 
 .sidebar .menus .item-menu a{
@@ -67,6 +68,7 @@
     padding: 10px;
     border-radius: 10px;
     position: relative;
+    text-decoration: none;
 }
 
 .sidebar .menus .item-menu .icon{
@@ -99,7 +101,7 @@
 }
 
 .sidebar .menus .dropdown .dropdown-menu{
-    display: none;
+    display: flex;
     flex-direction: column;
     margin-left: 10px;
 }

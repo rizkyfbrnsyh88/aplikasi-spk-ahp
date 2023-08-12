@@ -7,13 +7,13 @@ include '../includes/sidebar.inc.php';
         <div class="navigasi">
             <a href="dashboard.php">Dashboard</a>
             <span>/</span>
-            <span>Nilai Preferensi</span>
+            <span>Nilai Awal Alternatif</span>
         </div>
         <form method="post">
             <div class="judul-content">
                 <div class="text-judul">
                     <i class="fa-solid fa-book icon"></i>
-                    <h2>Data Nilai Preferensi</h2>
+                    <h2>Data Nilai Awal Alternatif</h2>
                 </div>
                 <div class="btn-judul">
                     <div class="btn-hapus">
@@ -22,7 +22,7 @@ include '../includes/sidebar.inc.php';
                         </button>
                     </div>
                     <div class="btn-tambah">
-                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-nilai-preferensi.php'">
+                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-user.php'">
                             <i class="fa-solid fa-clone"></i><span>Tambah Data</span>
                         </button>
                     </div>

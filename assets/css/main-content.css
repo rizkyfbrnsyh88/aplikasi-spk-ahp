@@ -12,15 +12,15 @@
     flex-grow: 1;
     background-color: var(--colorbg);
     margin-left: 250px;
+    min-height: 100vh;
 }
 
 .content{
     margin: 30px;
     box-sizing: border-box;
-    height: 1000px;
 }
 
-/* Dashboard */
+/* Header Dashboard */
 .main-content .content .header{
     padding: 50px;
     box-sizing: border-box;
@@ -31,7 +31,7 @@
     font-size: 60px;
 }
 
-/* Nilai Preferensi */
+/* Output Konten */
 .main-content .content .navigasi{
     display: flex;
     flex-direction: row;
@@ -71,9 +71,12 @@
     align-items: center;
 }
 
-.main-content .content .btn-judul .btn-hapus button{
+button{
     outline: none;
     border: none;
+}
+
+.main-content .content .btn-judul .btn-hapus button, .btn-input .btn-simpan button{
     background-color: var(--secondcolor);
     padding: 15px 20px;
     cursor: pointer;
@@ -84,9 +87,7 @@
     gap: 5px;
 }
 
-.main-content .content .btn-judul .btn-tambah button{
-    outline: none;
-    border: none;
+.main-content .content .btn-judul .btn-tambah button, .btn-input .btn-kembali button{
     background-color: var(--colortitle);
     padding: 15px 20px;
     cursor: pointer;
@@ -98,26 +99,55 @@
     
 }
 
-.main-content .content .btn-judul button:hover{
+.main-content .content .btn-judul button:hover, .btn-input .btn-simpan button:hover, .btn-input .btn-kembali button:hover{
     background-color: red;
-    transition: all ease-in .1s;
+    transition: all ease-in .2s;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    font-size: 14px;
   }
   th, td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
   }
   th {
-    background-color: #f2f2f2;
+    background-color: rgb(233, 233, 233);
   }
   tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: rgb(233, 233, 233);
+  }
+
+  /* Input Konten */
+  .main-content .content .box-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: var(--borderset);
+    padding: 15px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .main-content .content .box-input .input{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+   input, select{
+    padding: 7px;
+  }
+
+  .btn-input{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
   }
 
 

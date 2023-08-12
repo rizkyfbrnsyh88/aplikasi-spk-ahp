@@ -7,13 +7,13 @@ include '../includes/sidebar.inc.php';
         <div class="navigasi">
             <a href="dashboard.php">Dashboard</a>
             <span>/</span>
-            <span>Nilai Preferensi</span>
+            <span>Kriteria</span>
         </div>
         <form method="post">
             <div class="judul-content">
                 <div class="text-judul">
                     <i class="fa-solid fa-book icon"></i>
-                    <h2>Data Nilai Preferensi</h2>
+                    <h2>Data Kriteria</h2>
                 </div>
                 <div class="btn-judul">
                     <div class="btn-hapus">
@@ -22,7 +22,7 @@ include '../includes/sidebar.inc.php';
                         </button>
                     </div>
                     <div class="btn-tambah">
-                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-nilai-preferensi.php'">
+                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-user.php'">
                             <i class="fa-solid fa-clone"></i><span>Tambah Data</span>
                         </button>
                     </div>
@@ -32,31 +32,27 @@ include '../includes/sidebar.inc.php';
                 <table>
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Usia</th>
-                            <th>Kota</th>
+                            <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
+                            <th>ID Kriteria</th>
+                            <th>Nama Kriteria</th>
+                            <th>Bobot Kriteria</th>
+                            <th width="100px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>John Doe</td>
-                            <td>25</td>
-                            <td>Jakarta</td>
+                            <td><input type="checkbox" name="select-all" id="select-all" /></td>
+                            <td>C1</td>
+                            <td>Tanggung Jawab</td>
+                            <td>1</td>
+                            <td>AKSI</td>
                         </tr>
                         <tr>
-                            <td>Jane Smith</td>
-                            <td>30</td>
-                            <td>Bandung</td>
-                        </tr>
-                        <tr>
-                            <td>Michael Johnson</td>
-                            <td>22</td>
-                            <td>Surabaya</td>
-                        </tr>
-                        <tr>
-                            <td>Sarah Williams</td>
-                            <td>28</td>
-                            <td>Medan</td>
+                            <td><input type="checkbox" name="select-all" id="select-all" /></td>
+                            <td>C2</td>
+                            <td>Kedisiplinan</td>
+                            <td>1</td>
+                            <td>AKSI</td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,3 +1,13 @@
+<?php
+include("koneksi.php");
+// session_start();
+// if (!isset($_SESSION['nama_lengkap'])) {
+//     echo "<script>location.href='login.php'</script>";
+// }
+$config = new Koneksi();
+$db = $config->getConnection();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +17,10 @@
     <title>SPK | Analitycal Hierarchy Process</title>
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/main-content.css">
+    <link rel="stylesheet" href="../assets/css/jquery.toastmessage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="../assets/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
@@ -26,6 +39,12 @@
                     <a href="../views/dashboard.php">
                         <i class="fa-solid fa-gauge icon"></i>
                         <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="item-menu">
+                    <a href="../views/data-alternatif.php">
+                        <i class="fa-brands fa-cloudscale icon"></i>
+                        <span>Pegawai</span>
                     </a>
                 </div>
                 <div class="item-menu">
