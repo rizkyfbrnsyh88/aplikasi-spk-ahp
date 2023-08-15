@@ -1,5 +1,26 @@
 <?php
 include '../includes/sidebar.inc.php';
+
+if ($_POST) {
+    include '../includes/nilai-preferensi.inc.php';
+    $eks = new Nilai($db);
+    $eks->jm = $_POST['jumlahNilai'];
+    $eks->kt = $_POST['keterangan'];
+    if ($eks->insert()) { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showStickySuccessToast();
+            };
+        </script> <?php
+                } else { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showStickyErrorToast();
+            };
+        </script> <?php
+                }
+            }
+                    ?>
 ?>
 
 <div class="main-content">
@@ -34,7 +55,7 @@ include '../includes/sidebar.inc.php';
                         </button>
                     </div>
                     <div class="btn-kembali">
-                        <button type="button" name="kembali" onclick="location.href='user.php'">
+                        <button type="button" name="kembali" onclick="location.href='nilai-preferensi.php'">
                             <i class="fa-solid fa-backward"></i><span>Kembali</span>
                         </button>
                     </div>

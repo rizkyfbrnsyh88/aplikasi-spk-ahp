@@ -1,21 +1,21 @@
 <?php
 include '../includes/sidebar.inc.php';
-include '../includes/kriteria.inc.php';
+include '../includes/nilai-preferensi.inc.php';
 
-$kriObj = new Kriteria($db);
+$pgn = new Nilai($db);
+
+$id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
+
+include '../includes/kriteria.inc.php';
+$eks = new Kriteria($db);
+$eks->id = $id;
+$eks->readOne();
 
 if ($_POST) {
-
-    $kriObj->id = $_POST['idKriteria'];
-    $kriObj->nama = $_POST['namaKriteria'];
-
-    if ($kriObj->insert()) { ?>
-        <script type="text/javascript">
-            window.onload = function() {
-                showStickySuccessToast();
-            };
-        </script> <?php
-                } else { ?>
+    $eks->nama = $_POST['namaKriteria'];
+    if ($eks->update()) {
+        echo "<script>location.href='data-kriteria.php'</script>";
+    } else { ?>
         <script type="text/javascript">
             window.onload = function() {
                 showStickyErrorToast();
@@ -32,23 +32,19 @@ if ($_POST) {
             <span>/</span>
             <a href="data-kriteria.php">Kriteria</a>
             <span>/</span>
-            <span>Tambah Data</span>
+            <span>Ubah Data</span>
         </div>
         <form method="post">
             <div class="judul-content">
                 <div class="text-judul">
                     <i class="fa-solid fa-user icon"></i>
-                    <h2>Tambah Data Kriteria</h2>
+                    <h2>Ubah Data Kriteria</h2>
                 </div>
             </div>
             <div class="box-input">
                 <div class="input">
-                    <label for="idKriteria">ID Kriteria</label>
-                    <input type="text" id="idKriteria" name="idKriteria" required readonly="on" value="<?= $kriObj->getNewID() ?>">
-                </div>
-                <div class="input">
                     <label for="namaKriteria">Nama Kriteria</label>
-                    <input type="text" id="namaKriteria" name="namaKriteria" required>
+                    <input type="text" id="namaKriteria" name="namaKriteria" required value="<?php echo $eks->nama; ?>">
                 </div>
                 <div class="btn-input">
                     <div class="btn-simpan">

@@ -1,21 +1,19 @@
 <?php
 include '../includes/sidebar.inc.php';
-include '../includes/kriteria.inc.php';
 
-$kriObj = new Kriteria($db);
+$id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
+
+include '../includes/nilai-preferensi.inc.php';
+$eks = new Nilai($db);
+$eks->id = $id;
+$eks->readOne();
 
 if ($_POST) {
-
-    $kriObj->id = $_POST['idKriteria'];
-    $kriObj->nama = $_POST['namaKriteria'];
-
-    if ($kriObj->insert()) { ?>
-        <script type="text/javascript">
-            window.onload = function() {
-                showStickySuccessToast();
-            };
-        </script> <?php
-                } else { ?>
+    $eks->jm = $_POST['jumlahNilai'];
+    $eks->kt = $_POST['keterangan'];
+    if ($eks->update()) {
+        echo "<script>location.href='nilai-preferensi.php'</script>";
+    } else { ?>
         <script type="text/javascript">
             window.onload = function() {
                 showStickyErrorToast();
@@ -24,31 +22,32 @@ if ($_POST) {
                 }
             }
                     ?>
+?>
 
 <div class="main-content">
     <div class="content">
         <div class="navigasi">
             <a href="dashboard.php">Dashboard</a>
             <span>/</span>
-            <a href="data-kriteria.php">Kriteria</a>
+            <a href="nilai-preferensi.php">Nilai Preferensi</a>
             <span>/</span>
-            <span>Tambah Data</span>
+            <span>Ubah Data</span>
         </div>
         <form method="post">
             <div class="judul-content">
                 <div class="text-judul">
                     <i class="fa-solid fa-user icon"></i>
-                    <h2>Tambah Data Kriteria</h2>
+                    <h2>Ubah Data Nilai Preferensi</h2>
                 </div>
             </div>
             <div class="box-input">
                 <div class="input">
-                    <label for="idKriteria">ID Kriteria</label>
-                    <input type="text" id="idKriteria" name="idKriteria" required readonly="on" value="<?= $kriObj->getNewID() ?>">
+                    <label for="jumlahNilai">Jumlah Nilai</label>
+                    <input type="text" id="jumlahNilai" name="jumlahNilai" required value="<?php echo $eks->jm; ?>">
                 </div>
                 <div class="input">
-                    <label for="namaKriteria">Nama Kriteria</label>
-                    <input type="text" id="namaKriteria" name="namaKriteria" required>
+                    <label for="keterangan">Keterangan</label>
+                    <input type="text" id="keterangan" name="keterangan" required value="<?php echo $eks->kt; ?>">
                 </div>
                 <div class="btn-input">
                     <div class="btn-simpan">
@@ -57,7 +56,7 @@ if ($_POST) {
                         </button>
                     </div>
                     <div class="btn-kembali">
-                        <button type="button" name="kembali" onclick="location.href='data-kriteria.php'">
+                        <button type="button" name="kembali" onclick="location.href='nilai-preferensi.php'">
                             <i class="fa-solid fa-backward"></i><span>Kembali</span>
                         </button>
                     </div>

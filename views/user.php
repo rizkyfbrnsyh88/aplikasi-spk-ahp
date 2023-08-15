@@ -65,32 +65,36 @@ if (isset($_POST['hapus-contengan'])) {
                 <table>
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Usia</th>
-                            <th>Kota</th>
+                            <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
+                            <th>Nama Lengkap</th>
+                            <th>Role</th>
+                            <th>Username</th>
+                            <th width="100px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>25</td>
-                            <td>Jakarta</td>
-                        </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>30</td>
-                            <td>Bandung</td>
-                        </tr>
-                        <tr>
-                            <td>Michael Johnson</td>
-                            <td>22</td>
-                            <td>Surabaya</td>
-                        </tr>
-                        <tr>
-                            <td>Sarah Williams</td>
-                            <td>28</td>
-                            <td>Medan</td>
-                        </tr>
+                        <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <tr>
+                                <td style="vertical-align:middle;"><input type="checkbox" value="<?php echo $row['id_pengguna'] ?>" name="checkbox[]" /></td>
+                                <td style="vertical-align:middle;"><?php echo $row['nama_lengkap'] ?></td>
+                                <td style="vertical-align:middle;"><?php echo $row['level'] ?></td>
+                                <td style="vertical-align:middle;"><?php echo $row['username'] ?></td>
+                                <td>
+                                    <div class="btn-aksi">
+                                        <div class="btn-aksi-edit">
+                                            <a href="ubah-user.php?id=<?= $row['id_user'] ?>">
+                                                <i class="fa-solid fa-pencil"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-aksi-hapus">
+                                            <a href="hapus-user.php?id=<?= $row['id_user'] ?>" onclick="return confirm('Yakin ingin menghapus data')">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
             </div>

@@ -20,7 +20,7 @@ class Login
             $this->user = $user;
             session_start();
             $_SESSION['nama_lengkap'] = $user['nama_lengkap'];
-            $_SESSION['id_pengguna'] = $user['id_pengguna'];
+            $_SESSION['id_user'] = $user['id_user'];
             $_SESSION['level'] = $user['level'];
             $_SESSION['username'] = $user['username'];
             return $user['nama_lengkap'];

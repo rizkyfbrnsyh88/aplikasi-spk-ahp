@@ -5,12 +5,12 @@ $config = new Koneksi();
 $db = $config->getConnection();
 
 if ($_POST) {
-    include_once 'includes/login.inc.php';
+    include_once '../includes/login.inc.php';
     $login = new Login($db);
     $login->userid = $_POST['username'];
     $login->passid = md5($_POST['password']);
     if ($login->login()) {
-        echo "<script>location.href='index.php'</script>";
+        echo "<script>location.href='dashboard.php'</script>";
     } else {
         $msg = "Username / Password tidak sesuai!";
     }
@@ -36,7 +36,7 @@ if ($_POST) {
         <div class="welcome">
             <img src="../assets/images/set-login.png" alt="">
         </div>
-        <form action="" method="POST">
+        <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST">
             <div class="kotak-login">
                 <div class="judul">
                     <h1>LOGIN</h1>

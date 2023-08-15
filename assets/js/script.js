@@ -29,20 +29,13 @@ function nextSlide() {
     showSlide(currentIndex);
 }
 
-const dropdownButton = document.getElementsByClassName(".btn-dropdown");
-const dropdownMenu = document.getElementsByClassName(".dropdown-menu");
-  
-    dropdownButton.addEventListener("click", function () {
-      if (dropdownMenu.style.display === "flex") {
-        dropdownMenu.style.display = "none";
-      } else {
+function toggleDropdown() {
+    const dropdownMenu = document.getElementsByClassName("dropdown-menu");
+    if (dropdownMenu.style.display === "none") {
         dropdownMenu.style.display = "flex";
-      }
-    });
-  
-    // Tutup dropdown jika di luar dropdown diklik
-    document.addEventListener("click", function (event) {
-      if (!dropdownButton.contains(event.target)) {
+    } else {
         dropdownMenu.style.display = "none";
-      }
-    });
+    }
+}
+
+    

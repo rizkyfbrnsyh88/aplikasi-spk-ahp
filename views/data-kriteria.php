@@ -1,6 +1,39 @@
 <?php
 include '../includes/sidebar.inc.php';
-?>
+include '../includes/kriteria.inc.php';
+
+$pro = new Kriteria($db);
+$stmt = $pro->readAll();
+$count = $pro->countAll();
+
+if (isset($_POST['hapus-contengan'])) {
+    $imp = "('" . implode("','", array_values($_POST['checkbox'])) . "')";
+    $result = $pro->hapusell($imp);
+    if ($result) { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showSuccessToast();
+                setTimeout(function() {
+                    window.location.reload(1);
+                    history.go(0)
+                    location.href = location.href
+                }, 5000);
+            };
+        </script> <?php
+                } else { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showErrorToast();
+                setTimeout(function() {
+                    window.location.reload(1);
+                    history.go(0)
+                    location.href = location.href
+                }, 5000);
+            };
+        </script> <?php
+                }
+            }
+                    ?>
 
 <div class="main-content">
     <div class="content">
@@ -22,7 +55,7 @@ include '../includes/sidebar.inc.php';
                         </button>
                     </div>
                     <div class="btn-tambah">
-                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-user.php'">
+                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-kriteria.php'">
                             <i class="fa-solid fa-clone"></i><span>Tambah Data</span>
                         </button>
                     </div>
@@ -40,20 +73,30 @@ include '../includes/sidebar.inc.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><input type="checkbox" name="select-all" id="select-all" /></td>
-                            <td>C1</td>
-                            <td>Tanggung Jawab</td>
-                            <td>1</td>
-                            <td>AKSI</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="select-all" id="select-all" /></td>
-                            <td>C2</td>
-                            <td>Kedisiplinan</td>
-                            <td>1</td>
-                            <td>AKSI</td>
-                        </tr>
+                        <?php $no = 1;
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) :  ?>
+                            <tr>
+                                <td style="vertical-align:middle;"><input type="checkbox" value="<?php echo $row['id_kriteria'] ?>" name="checkbox[]" /></td>
+                                <td style="vertical-align:middle;"><?php echo $row['id_kriteria'] ?></td>
+                                <td style="vertical-align:middle;"><?php echo $row['nama_kriteria'] ?></td>
+                                <td style="vertical-align:middle;"><?php echo $row['bobot_kriteria'] ?></td>
+                                <td>
+                                    <div class="btn-aksi">
+                                        <div class="btn-aksi-edit">
+                                            <a href="ubah-kriteria.php?id=<?= $row['id_kriteria'] ?>">
+                                                <i class="fa-solid fa-pencil"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-aksi-hapus">
+                                            <a href="hapus-kriteria.php?id=<?= $row['id_kriteria'] ?>" onclick="return confirm('Yakin ingin menghapus data')">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
                     </tbody>
                 </table>
             </div>

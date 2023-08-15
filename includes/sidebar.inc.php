@@ -1,9 +1,9 @@
 <?php
 include("koneksi.php");
-// session_start();
-// if (!isset($_SESSION['nama_lengkap'])) {
-//     echo "<script>location.href='login.php'</script>";
-// }
+session_start();
+if (!isset($_SESSION['nama_lengkap'])) {
+    echo "<script>location.href='login.php'</script>";
+}
 $config = new Koneksi();
 $db = $config->getConnection();
 ?>
@@ -41,64 +41,82 @@ $db = $config->getConnection();
                         <span>Dashboard</span>
                     </a>
                 </div>
-                <div class="item-menu">
-                    <a href="../views/data-alternatif.php">
-                        <i class="fa-brands fa-cloudscale icon"></i>
-                        <span>Pegawai</span>
-                    </a>
-                </div>
-                <div class="item-menu">
-                    <a href="../views/nilai-preferensi.php">
-                        <i class="fa-brands fa-cloudscale icon"></i>
-                        <span>Skala Dasar AHP</span>
-                    </a>
-                </div>
-                <div class="dropdown">
+                <?php if ($_SESSION["level"] == "TU") : ?>
                     <div class="item-menu">
-                        <a href="">
-                            <i class="fa-solid fa-database icon"></i>
-                            <span>Data</span>
-                            <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
+                        <a href="../views/data-alternatif.php">
+                            <i class="fa-solid fa-user icon"></i>
+                            <span>Pegawai</span>
                         </a>
                     </div>
-                    <div class="dropdown-menu">
-                        <a href="">Alternatif</a>
-                        <a href="">Kriteria</a>
-                        <a href="">Nilai Awal</a>
-                    </div>
-                </div>
-                <div class="dropdown">
+                <?php endif; ?>
+                <?php if ($_SESSION["level"] == "Penilai") : ?>
                     <div class="item-menu">
-                        <a href="">
-                            <i class="fa-solid fa-code-compare icon"></i>
-                            <span>Perbandingan</span>
-                            <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
+                        <a href="../views/nilai-preferensi.php">
+                            <i class="fa-brands fa-cloudscale icon"></i>
+                            <span>Skala Dasar AHP</span>
                         </a>
                     </div>
-                    <div class="dropdown-menu">
-                        <a href="">Perbandingan Kriteria</a>
-                        <a href="">Perbandingan Alternatif</a>
+                <?php endif; ?>
+                <?php if ($_SESSION["level"] == "Penilai") : ?>
+                    <div class="dropdown">
+                        <div class="item-menu">
+                            <p>
+                                <i class="fa-solid fa-database icon"></i>
+                                <span>Data</span onclick="toggleDropdown()">
+                                <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
+                            </p>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="../views/data-alternatif.php">Alternatif</a>
+                            <a href="../views/data-kriteria.php">Kriteria</a>
+                            <a href="../views/penilaian-alternatif.php">Nilai Awal</a>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
+                <?php if ($_SESSION["level"] == "Penilai") : ?>
+                    <div class="dropdown">
+                        <div class="item-menu" onclick="toggleDropdown()">
+                            <p>
+                                <i class="fa-solid fa-code-compare icon"></i>
+                                <span>Perbandingan</span>
+                                <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
+                            </p>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="">Perbandingan Kriteria</a>
+                            <a href="">Perbandingan Alternatif</a>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($_SESSION["level"] == "Penilai" or $_SESSION["level"] == "Kepsek") : ?>
+                    <div class="dropdown">
+                        <div class="item-menu" onclick="toggleDropdown()">
+                            <p>
+                                <i class="fa-solid fa-file icon"></i>
+                                <span>Laporan</span>
+                                <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
+                            </p>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="">Hasil Akhir</a>
+                            <a href="">Rangking</a>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <div class="dropdown">
-                    <div class="item-menu">
-                        <a href="">
-                            <i class="fa-solid fa-file icon"></i>
-                            <span>Laporan</span>
+                    <div class="item-menu" onclick="toggleDropdown()">
+                        <p>
+                            <i class="fa-solid fa-gear icon"></i>
+                            <span>Pengaturan</span>
                             <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
-                        </a>
+                        </p>
                     </div>
-                    <div class="dropdown-menu">
-                        <a href="">Hasil Akhir</a>
-                        <a href="">Rangking</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <span class="btn-dropdown">Data</span>
                     <div class="dropdown-menu">
                         <a href="">Profile</a>
-                        <a href="">Kelola User</a>
-                        <a href="">Logout</a>
+                        <?php if ($_SESSION["level"] == "TU") : ?>
+                            <a href="../views/user.php">Kelola User</a>
+                        <?php endif; ?>
+                        <a href="../views/logout.php">Logout</a>
                     </div>
                 </div>
             </div>

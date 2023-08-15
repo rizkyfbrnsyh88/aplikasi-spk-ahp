@@ -1,6 +1,48 @@
 <?php
 include '../includes/sidebar.inc.php';
-?>
+
+include '../includes/penilaian-awal-alternatif.inc.php';
+$pro = new NilaiAwal($db);
+$stmt = $pro->readAll();
+
+include '../includes/kriteria.inc.php';
+$kriteriaObj = new Kriteria($db);
+$kriteria = $kriteriaObj->readAll();
+
+
+include '../includes/detail-penilaian-awal.inc.php';
+$nilAwDeObj = new DetailPenilaian($db);
+// $nilAwDe = $nilAwDeObj->readAllByNik();
+
+
+if (isset($_POST['hapus-contengan'])) {
+    $imp = "('" . implode("','", array_values($_POST['checkbox'])) . "')";
+    $result = $pro->hapusell($imp);
+    if ($result) { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showSuccessToast();
+                setTimeout(function() {
+                    window.location.reload(1);
+                    history.go(0)
+                    location.href = location.href
+                }, 5000);
+            };
+        </script> <?php
+                } else { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showErrorToast();
+                setTimeout(function() {
+                    window.location.reload(1);
+                    history.go(0)
+                    location.href = location.href
+                }, 5000);
+            };
+        </script> <?php
+                }
+            }
+                    ?>
 
 <div class="main-content">
     <div class="content">
@@ -22,7 +64,7 @@ include '../includes/sidebar.inc.php';
                         </button>
                     </div>
                     <div class="btn-tambah">
-                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-user.php'">
+                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-penilaian-alternatif.php'">
                             <i class="fa-solid fa-clone"></i><span>Tambah Data</span>
                         </button>
                     </div>
@@ -32,32 +74,47 @@ include '../includes/sidebar.inc.php';
                 <table>
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Usia</th>
-                            <th>Kota</th>
+                            <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
+                            <th>ID Alternatif</th>
+                            <th>Nilai</th>
+                            <th>Keterangan</th>
+                            <th>Periode</th>
+                            <th width="100px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>25</td>
-                            <td>Jakarta</td>
-                        </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>30</td>
-                            <td>Bandung</td>
-                        </tr>
-                        <tr>
-                            <td>Michael Johnson</td>
-                            <td>22</td>
-                            <td>Surabaya</td>
-                        </tr>
-                        <tr>
-                            <td>Sarah Williams</td>
-                            <td>28</td>
-                            <td>Medan</td>
-                        </tr>
+                        <?php $no = 1;
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <tr>
+                                <td><input type="checkbox" value="<?= $row['id_nilai_awal'] ?>" name="checkbox[]" /></td>
+                                <td><?= $row['id_alternatif'] ?></td>
+                                <td><?= $row['nilai'] ?></td>
+                                <td><?php
+                                    if ($row['keterangan'] == "B") {
+                                        echo "Baik";
+                                    } elseif ($row['keterangan'] == "C") {
+                                        echo "Cukup";
+                                    } else {
+                                        echo "Kurang";
+                                    }
+                                    ?></td>
+                                <td><?= $row['periode'] ?></td>
+                                <td>
+                                    <div class="btn-aksi">
+                                        <div class="btn-aksi-detail">
+                                            <a href="detail-penilaian-alternatif.php?id=<?= $row['id_alternatif'] ?>">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-aksi-hapus">
+                                            <a href="hapus-penilaian-alternatif.php?id=<?= $row['id_penilaian'] ?>" onclick="return confirm('Yakin ingin menghapus data')">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
             </div>

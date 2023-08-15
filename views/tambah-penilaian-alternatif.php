@@ -1,5 +1,52 @@
 <?php
 include '../includes/sidebar.inc.php';
+
+include '../includes/alternatif.inc.php';
+$altObj = new Alternatif($db);
+$alt = $altObj->readAll();
+
+include '../includes/kriteria.inc.php';
+$kriObj = new Kriteria($db);
+$kri = $kriObj->readAll();
+
+if ($_POST) {
+    include '../includes/penilaian-awal-alternatif.inc.php';
+    $nilObj = new NilaiAwal($db);
+    $nilObj->id_alternatif = $_POST['alt'];
+    $nilai = (array_sum($_POST["kriteria"]) / $kriObj->countAll());
+    $nilObj->nilai = $nilai;
+    $nilObj->keterangan = $nilObj->getRange($nilai);
+    $nilObj->periode = $_POST['periode'];
+
+    if ($nilObj->insert()) {
+        $id = $db->lastInsertId();
+        include '../includes/detail-penilaian-awal.inc.php';
+        $nilDObj = new DetailPenilaian($db);
+        foreach ($_POST["kriteria"] as $k => $v) {
+            $nilDObj->id_penilaian = $id;
+            $nilDObj->id_kriteria = $k;
+            $nilDObj->nilai = $_POST["kriteria"][$k];
+            if (!$nilDObj->insert()) {
+                echo "<script type=\"text/javascript\">
+  						window.onload=function(){
+  							showStickyErrorToast();
+  						};
+  				</script>";
+            }
+        }
+        echo "<script type=\"text/javascript\">
+						window.onload=function(){
+							showStickySuccessToast();
+						};
+				</script>";
+    } else {
+        echo "<script type=\"text/javascript\">
+						window.onload=function(){
+							showStickyErrorToast();
+						};
+				</script>";
+    }
+}
 ?>
 
 <div class="main-content">
@@ -7,7 +54,7 @@ include '../includes/sidebar.inc.php';
         <div class="navigasi">
             <a href="dashboard.php">Dashboard</a>
             <span>/</span>
-            <a href="user.php">Penilaian Alternatif</a>
+            <a href="penilaian-alternatif.php">Penilaian Alternatif</a>
             <span>/</span>
             <span>Tambah Data</span>
         </div>
@@ -23,38 +70,24 @@ include '../includes/sidebar.inc.php';
                     <label for="alt">Alternatif</label>
                     <select name="alt" id="alt" required>
                         <option value="">-----</option>
-                        <!-- <option value="Penilai">Penilai</option>
-                        <option value="TU">Tata Usaha</option>
-                        <option value="Kepsek">Kepala Sekolah</option> -->
+                        <?php while ($row = $alt->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <option value="<?= $row["id_alternatif"] ?>"><?= $row["nama"] ?></option>
+                        <?php endwhile; ?>
                     </select>
                 </div>
+                <?php while ($row = $kri->fetch(PDO::FETCH_ASSOC)) : ?>
+                    <div class="input">
+                        <label for="<?= $row["nama_kriteria"] ?>"><?= ucfirst($row["nama_kriteria"]) ?></label>
+                        <input type="text" id="kriteria[<?= $row["id_kriteria"] ?>]" name="kriteria[<?= $row["id_kriteria"] ?>]" required>
+                    </div>
+                <?php endwhile; ?>
                 <div class="input">
-                    <label for="tj">Tanggung Jawab</label>
-                    <input type="text" id="tj" name="tj" required>
-                </div>
-                <div class="input">
-                    <label for="username">Kedisiplinan</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input">
-                    <label for="alt">Periode</label>
-                    <select name="alt" id="alt" required>
+                    <label for="periode">Periode</label>
+                    <select name="periode" id="periode" required>
                         <option value="">-----</option>
-                        <!-- <option value="Penilai">Penilai</option>
-                        <option value="TU">Tata Usaha</option>
-                        <option value="Kepsek">Kepala Sekolah</option> -->
+                        <?php for ($i = 2020; $i <= 2030; $i++) : ?>
+                            <option value="<?= $i ?>"><?= $i ?></option>
+                        <?php endfor; ?>
                     </select>
                 </div>
                 <div class="btn-input">
@@ -64,7 +97,7 @@ include '../includes/sidebar.inc.php';
                         </button>
                     </div>
                     <div class="btn-kembali">
-                        <button type="button" name="kembali" onclick="location.href='user.php'">
+                        <button type="button" name="kembali" onclick="location.href='penilaian-alternatif.php'">
                             <i class="fa-solid fa-backward"></i><span>Kembali</span>
                         </button>
                     </div>

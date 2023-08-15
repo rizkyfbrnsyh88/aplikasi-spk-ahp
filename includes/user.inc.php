@@ -69,7 +69,7 @@ class User
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':nm', $this->nl);
-        $stmt->bindParam(':rl', $this->lvl);
+        $stmt->bindParam(':lvl', $this->lvl);
         $stmt->bindParam(':un', $this->un);
         $stmt->bindParam(':ps', $this->pw);
         $stmt->bindParam(':id', $this->id);

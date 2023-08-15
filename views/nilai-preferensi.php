@@ -1,6 +1,39 @@
 <?php
 include '../includes/sidebar.inc.php';
-?>
+include '../includes/nilai-preferensi.inc.php';
+
+$pro = new Nilai($db);
+$stmt = $pro->readAll();
+$count = $pro->countAll();
+
+if (isset($_POST['hapus-contengan'])) {
+    $imp = "('" . implode("','", array_values($_POST['checkbox'])) . "')";
+    $result = $pro->hapusell($imp);
+    if ($result) { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showSuccessToast();
+                setTimeout(function() {
+                    window.location.reload(1);
+                    history.go(0)
+                    location.href = location.href
+                }, 5000);
+            };
+        </script> <?php
+                } else { ?>
+        <script type="text/javascript">
+            window.onload = function() {
+                showErrorToast();
+                setTimeout(function() {
+                    window.location.reload(1);
+                    history.go(0)
+                    location.href = location.href
+                }, 5000);
+            };
+        </script> <?php
+                }
+            }
+                    ?>
 
 <div class="main-content">
     <div class="content">
@@ -32,32 +65,35 @@ include '../includes/sidebar.inc.php';
                 <table>
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Usia</th>
-                            <th>Kota</th>
+                            <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
+                            <th>Nilai</th>
+                            <th>Keterangan</th>
+                            <th width="100px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>25</td>
-                            <td>Jakarta</td>
-                        </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>30</td>
-                            <td>Bandung</td>
-                        </tr>
-                        <tr>
-                            <td>Michael Johnson</td>
-                            <td>22</td>
-                            <td>Surabaya</td>
-                        </tr>
-                        <tr>
-                            <td>Sarah Williams</td>
-                            <td>28</td>
-                            <td>Medan</td>
-                        </tr>
+                        <?php $no = 1;
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <tr>
+                                <td style="vertical-align:middle;"><input type="checkbox" value="<?php echo $row['id_nilai'] ?>" name="checkbox[]" /></td>
+                                <td style="vertical-align:middle;"><?php echo $row['jum_nilai'] ?></td>
+                                <td style="vertical-align:middle;"><?php echo $row['ket_nilai'] ?></td>
+                                <td>
+                                    <div class="btn-aksi">
+                                        <div class="btn-aksi-edit">
+                                            <a href="ubah-nilai-preferensi.php?id=<?= $row['id_nilai'] ?>">
+                                                <i class="fa-solid fa-pencil"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-aksi-hapus">
+                                            <a href="hapus-nilai-preferensi.php?id=<?= $row['id_nilai'] ?>" onclick="return confirm('Yakin ingin menghapus data')">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
             </div>

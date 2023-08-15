@@ -32,6 +32,7 @@
     bottom: 0;
     background-color: var(--secondcolor);
     box-sizing: border-box;
+    overflow: scroll;
 }
 
 .sidebar .header{
@@ -60,7 +61,7 @@
     font-size: 14px;
 }
 
-.sidebar .menus .item-menu a{
+.sidebar .menus .item-menu a, .sidebar .menus .item-menu p{
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -69,6 +70,8 @@
     border-radius: 10px;
     position: relative;
     text-decoration: none;
+    margin: 5px;
+    font-weight: 700;
 }
 
 .sidebar .menus .item-menu .icon{
@@ -82,6 +85,7 @@
     position: absolute;
     right: 0;
     margin-right: 10px;
+    transform: rotate(-90deg);
 }
 
 .sidebar .menus .item-menu a:hover{
@@ -89,8 +93,14 @@
     background-color: var(--colortitle);
 }
 
+.sidebar .menus .item-menu p:hover{
+    transition: all ease-in .3s;
+    background-color: var(--colortitle);
+    cursor: pointer;
+}
+
 .sidebar .menus .item-menu a:hover .icon-dropdown{
-    transform: rotate(-180deg);
+    transform: rotate(0deg);
     transition: all ease-in .3s;
 }
 
@@ -104,4 +114,19 @@
     display: flex;
     flex-direction: column;
     margin-left: 10px;
+    gap: 5px;
+}
+
+.sidebar .menus .dropdown .dropdown-menu a{
+    padding: 10px;
+    color: var(--secondcolor);
+    background-color: var(--colorbg);
+    border-left: 10px solid var(--colortitle);
+}
+
+.sidebar .menus .dropdown .dropdown-menu a:hover{
+    color: var(--colorbg);
+    background-color: var(--colortitle);
+    transition: .3s linear;
+    border-left: 10px solid var(--colorbg);
 }

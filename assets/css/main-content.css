@@ -150,6 +150,34 @@ table {
     margin-top: 20px;
   }
 
+  .main-content .content .tabel .btn-aksi{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-aksi .btn-aksi-edit a, .btn-aksi .btn-aksi-detail a{
+    background-color: var(--colortitle);
+    padding: 5px;
+    color: var(--colorbg);
+  }
+
+  .btn-aksi .btn-aksi-hapus a{
+    background-color: var(--colortitle);
+    padding: 5px;
+    color: var(--colorbg);
+    transition: all ease-in .2s;
+  }
+
+  .btn-aksi .btn-aksi-hapus a:hover{
+    background-color: red;
+    transition: all ease-in .2s;
+  }
+
+  .btn-aksi .btn-aksi-edit a:hover, .btn-aksi .btn-aksi-detail a:hover{
+    background-color: green;
+    transition: all ease-in .2s;
+  }
 
 
 /* footer */
