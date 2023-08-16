@@ -1,4 +1,4 @@
 <?php
 session_start();
-echo "<script>location.href='login.php'</script>";
+header("Location: login.php");
 session_destroy();

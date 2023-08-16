@@ -23,7 +23,7 @@
             <a href="about.php">About School</a>
         </div>
         <div class="sign-in">
-            <a href="views/login.php">Sign In</a>
+            <a href="views/login.php">Login</a>
         </div>
     </nav>
 

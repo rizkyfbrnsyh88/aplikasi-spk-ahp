@@ -13,11 +13,15 @@
     background-color: var(--colorbg);
     margin-left: 250px;
     min-height: 100vh;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
 }
 
 .content{
     margin: 30px;
     box-sizing: border-box;
+
 }
 
 /* Header Dashboard */
@@ -104,6 +108,10 @@ button{
     transition: all ease-in .2s;
 }
 
+.tabel{
+  border: 5px solid red;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -132,6 +140,26 @@ table {
     box-sizing: border-box;
     margin-top: 20px;
     gap: 10px;
+  }
+
+  .main-content .content .box-input .row{
+    display: flex;
+  }
+
+  .main-content .content .box-input .kotak-input{
+    width: 33.3%;
+  }
+
+  .main-content .content .box-input .kotak-isi{
+    width: 90%;
+  }
+
+  .main-content .content .box-input .kotak-input .kri{
+    width: 100%;
+  }
+
+  .main-content .content .box-input .kotak-input input.colbox{
+    outline: none !important;
   }
 
   .main-content .content .box-input .input{

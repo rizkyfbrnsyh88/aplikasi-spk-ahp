@@ -3,19 +3,25 @@ include '../includes/sidebar.inc.php';
 
 if ($_POST) {
     include '../includes/nilai-preferensi.inc.php';
-    $eks = new Nilai($db);
+    $eks = new NilaiPreferensi($db);
     $eks->jm = $_POST['jumlahNilai'];
     $eks->kt = $_POST['keterangan'];
     if ($eks->insert()) { ?>
         <script type="text/javascript">
             window.onload = function() {
                 showStickySuccessToast();
+                setTimeout(function() {
+                    location.href = location.href
+                }, 2000);
             };
         </script> <?php
                 } else { ?>
         <script type="text/javascript">
             window.onload = function() {
                 showStickyErrorToast();
+                setTimeout(function() {
+                    location.href = location.href
+                }, 2000);
             };
         </script> <?php
                 }
@@ -42,7 +48,7 @@ if ($_POST) {
             <div class="box-input">
                 <div class="input">
                     <label for="jumlahNilai">Jumlah Nilai</label>
-                    <input type="text" id="jumlahNilai" name="jumlahNilai" required>
+                    <input type="text" id="jumlahNilai" name="jumlahNilai" required autofocus>
                 </div>
                 <div class="input">
                     <label for="keterangan">Keterangan</label>

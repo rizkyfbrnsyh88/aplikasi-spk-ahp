@@ -4,7 +4,7 @@ include '../includes/sidebar.inc.php';
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 
 include '../includes/nilai-preferensi.inc.php';
-$eks = new Nilai($db);
+$eks = new NilaiPreferensi($db);
 $eks->id = $id;
 $eks->readOne();
 

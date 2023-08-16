@@ -44,26 +44,29 @@ body{
 }
 
 .container-login .kotak-login{
-    border-radius: 30px;
-    width: 400px;
-    height: 400px;
+    border-radius: 20px;
     overflow: hidden;
     background-color: var(--colorbg);
     box-shadow: 2px 2px 10px #000;
 }
 
+.container-login .kotak-login .kotak-isi{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    width: 350px;
+    height: 350px;
+    box-sizing: border-box;
+}
+
 .container-login .kotak-login .judul{
     text-align: center;
     color: var(--colortitle);
-    padding: 50px;
-}
-
-.container-login .kotak-login .input{
-    padding: 0 50px 50px 50px;
 }
 
 input::placeholder{
-    color: #000;
+    color: #252525;
 }
 
 .container-login .kotak-login .input input{
@@ -71,16 +74,20 @@ input::placeholder{
     outline: none;
     border-bottom: 1px solid black;
     background: none;
-    padding: 7px 7px;
+    padding: 10px 0 10px 45px;
     width: 100%;
 }
 
 .container-login .kotak-login .input .input-username{
     margin-bottom: 20px;
+    position: relative;
+}
+
+.container-login .kotak-login .input .input-password{
+    position: relative;
 }
 
 .container-login .kotak-login .btn-login{
-    padding: 0 50px 50px 50px;
     text-align: center;
 }
 
@@ -98,4 +105,20 @@ input::placeholder{
 
 .container-login .kotak-login .btn-login button:hover{
     background-color: var(--secondcolor);
+}
+
+.icon{
+    position: absolute;
+    top: 12px;
+    left: 15px;
+}
+
+/* ERROR */
+.container-login .kotak-login .error-login{
+    text-align: center;
+    font-size: 12px;
+    padding: 5px;
+    background-color: rgb(255, 86, 86);
+    color: var(--colorbg);
+    font-weight: bold;
 }

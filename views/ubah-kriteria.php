@@ -2,7 +2,7 @@
 include '../includes/sidebar.inc.php';
 include '../includes/nilai-preferensi.inc.php';
 
-$pgn = new Nilai($db);
+$pgn = new NilaiPreferensi($db);
 
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 

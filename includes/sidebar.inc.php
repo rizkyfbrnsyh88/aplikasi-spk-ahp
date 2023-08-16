@@ -1,8 +1,9 @@
 <?php
 include("koneksi.php");
 session_start();
-if (!isset($_SESSION['nama_lengkap'])) {
-    echo "<script>location.href='login.php'</script>";
+if (!isset($_SESSION["login"])) {
+    header("Location: ../views/login.php");
+    exit;
 }
 $config = new Koneksi();
 $db = $config->getConnection();
@@ -78,13 +79,13 @@ $db = $config->getConnection();
                         <div class="item-menu" onclick="toggleDropdown()">
                             <p>
                                 <i class="fa-solid fa-code-compare icon"></i>
-                                <span>Perbandingan</span>
+                                <span>Perhitungan AHP</span>
                                 <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
                             </p>
                         </div>
                         <div class="dropdown-menu">
-                            <a href="">Perbandingan Kriteria</a>
-                            <a href="">Perbandingan Alternatif</a>
+                            <a href="../views/perbandingan-kriteria.php">Perbandingan Kriteria</a>
+                            <a href="../views/perbandingan-alternatif.php">Perbandingan Alternatif</a>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -112,7 +113,6 @@ $db = $config->getConnection();
                         </p>
                     </div>
                     <div class="dropdown-menu">
-                        <a href="">Profile</a>
                         <?php if ($_SESSION["level"] == "TU") : ?>
                             <a href="../views/user.php">Kelola User</a>
                         <?php endif; ?>

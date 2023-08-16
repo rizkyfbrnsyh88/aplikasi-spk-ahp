@@ -13,12 +13,18 @@ if ($_POST) {
         <script type="text/javascript">
             window.onload = function() {
                 showStickySuccessToast();
+                setTimeout(function() {
+                    location.href = location.href
+                }, 2000);
             };
         </script> <?php
                 } else { ?>
         <script type="text/javascript">
             window.onload = function() {
                 showStickyErrorToast();
+                setTimeout(function() {
+                    location.href = location.href
+                }, 2000);
             };
         </script> <?php
                 }
@@ -44,11 +50,11 @@ if ($_POST) {
             <div class="box-input">
                 <div class="input">
                     <label for="idKriteria">ID Kriteria</label>
-                    <input type="text" id="idKriteria" name="idKriteria" required readonly="on" value="<?= $kriObj->getNewID() ?>">
+                    <input type="text" style="outline: none;" id="idKriteria" name="idKriteria" required readonly="on" value="<?= $kriObj->getNewID() ?>">
                 </div>
                 <div class="input">
                     <label for="namaKriteria">Nama Kriteria</label>
-                    <input type="text" id="namaKriteria" name="namaKriteria" required>
+                    <input type="text" id="namaKriteria" name="namaKriteria" required autofocus>
                 </div>
                 <div class="btn-input">
                     <div class="btn-simpan">

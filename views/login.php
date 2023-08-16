@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (isset($_SESSION["login"])) {
+    header("Location: dashboard.php");
+    exit;
+}
+
 include_once '../includes/koneksi.php';
 
 $config = new Koneksi();
@@ -10,9 +17,10 @@ if ($_POST) {
     $login->userid = $_POST['username'];
     $login->passid = md5($_POST['password']);
     if ($login->login()) {
-        echo "<script>location.href='dashboard.php'</script>";
+        $_SESSION["login"] = true;
+        header("Location: dashboard.php");
     } else {
-        $msg = "Username / Password tidak sesuai!";
+        $error = true;
     }
 }
 ?>
@@ -26,6 +34,7 @@ if ($_POST) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPK | Login</title>
     <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
@@ -38,19 +47,28 @@ if ($_POST) {
         </div>
         <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST">
             <div class="kotak-login">
-                <div class="judul">
-                    <h1>LOGIN</h1>
-                </div>
-                <div class="input">
-                    <div class="input-username">
-                        <input type="text" name="username" id="username" placeholder="Username" autofocus>
+                <div class="kotak-isi">
+                    <div class="judul">
+                        <h1>LOGIN</h1>
                     </div>
-                    <div class="input-password">
-                        <input type="password" name="password" id="password" placeholder="Password">
+                    <?php if (isset($error)) : ?>
+                        <div class="error-login">
+                            <p>Username atau Password Salah!</p>
+                        </div>
+                    <?php endif; ?>
+                    <div class="input">
+                        <div class="input-username">
+                            <i class="fa-solid fa-user icon"></i>
+                            <input type="text" name="username" id="username" placeholder="Username" autofocus>
+                        </div>
+                        <div class="input-password">
+                            <i class="fa-solid fa-lock icon"></i>
+                            <input type="password" name="password" id="password" placeholder="Password">
+                        </div>
                     </div>
-                </div>
-                <div class="btn-login">
-                    <button type="submit">Login</button>
+                    <div class="btn-login">
+                        <button type="submit">Login</button>
+                    </div>
                 </div>
             </div>
         </form>

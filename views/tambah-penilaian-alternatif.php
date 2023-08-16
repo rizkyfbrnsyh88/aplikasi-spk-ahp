@@ -30,6 +30,9 @@ if ($_POST) {
                 echo "<script type=\"text/javascript\">
   						window.onload=function(){
   							showStickyErrorToast();
+                              setTimeout(function() {
+                                location.href = location.href
+                            }, 2000);
   						};
   				</script>";
             }
@@ -37,12 +40,18 @@ if ($_POST) {
         echo "<script type=\"text/javascript\">
 						window.onload=function(){
 							showStickySuccessToast();
+                            setTimeout(function() {
+                                location.href = location.href
+                            }, 2000);
 						};
 				</script>";
     } else {
         echo "<script type=\"text/javascript\">
 						window.onload=function(){
 							showStickyErrorToast();
+                            setTimeout(function() {
+                                location.href = location.href
+                            }, 2000);
 						};
 				</script>";
     }

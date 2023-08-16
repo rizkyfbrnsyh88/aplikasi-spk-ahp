@@ -4,7 +4,7 @@ $database = new Koneksi();
 $db = $database->getConnection();
 
 include '../includes/nilai-preferensi.inc.php';
-$pro = new Nilai($db);
+$pro = new NilaiPreferensi($db);
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 $pro->id = $id;
 

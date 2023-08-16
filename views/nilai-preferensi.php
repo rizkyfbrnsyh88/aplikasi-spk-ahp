@@ -2,7 +2,7 @@
 include '../includes/sidebar.inc.php';
 include '../includes/nilai-preferensi.inc.php';
 
-$pro = new Nilai($db);
+$pro = new NilaiPreferensi($db);
 $stmt = $pro->readAll();
 $count = $pro->countAll();
 
@@ -55,7 +55,7 @@ if (isset($_POST['hapus-contengan'])) {
                         </button>
                     </div>
                     <div class="btn-tambah">
-                        <button type="button" name="hapus-contengan" onclick="location.href='tambah-nilai-preferensi.php'">
+                        <button type="button" onclick="location.href='tambah-nilai-preferensi.php'">
                             <i class="fa-solid fa-clone"></i><span>Tambah Data</span>
                         </button>
                     </div>

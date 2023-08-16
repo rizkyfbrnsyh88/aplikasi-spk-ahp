@@ -14,12 +14,18 @@ if ($_POST) {
             <script type="text/javascript">
                 window.onload = function() {
                     showStickySuccessToast();
+                    setTimeout(function() {
+                        location.href = location.href
+                    }, 2000);
                 };
             </script> <?php
                     } else { ?>
             <script type="text/javascript">
                 window.onload = function() {
                     showStickyErrorToast();
+                    setTimeout(function() {
+                        location.href = location.href
+                    }, 2000);
                 };
             </script> <?php
                     }
@@ -27,6 +33,9 @@ if ($_POST) {
         <script type="text/javascript">
             window.onload = function() {
                 showStickyWarningToast();
+                setTimeout(function() {
+                    location.href = location.href
+                }, 2000);
             };
         </script> <?php
                 }
@@ -53,7 +62,7 @@ if ($_POST) {
             <div class="box-input">
                 <div class="input">
                     <label for="namaLengkap">Nama Lengkap</label>
-                    <input type="text" id="namaLengkap" name="namaLengkap" required>
+                    <input type="text" id="namaLengkap" name="namaLengkap" required autofocus>
                 </div>
                 <div class="input">
                     <label for="level">Level</label>

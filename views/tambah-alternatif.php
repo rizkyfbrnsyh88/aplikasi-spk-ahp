@@ -19,12 +19,18 @@ if ($_POST) {
         <script type="text/javascript">
             window.onload = function() {
                 showStickySuccessToast();
+                setTimeout(function() {
+                    location.href = location.href
+                }, 2000);
             };
         </script> <?php
                 } else { ?>
         <script type="text/javascript">
             window.onload = function() {
                 showStickyErrorToast();
+                setTimeout(function() {
+                    location.href = location.href
+                }, 2000);
             };
         </script> <?php
                 }
@@ -51,11 +57,11 @@ if ($_POST) {
             <div class="box-input">
                 <div class="input">
                     <label for="idAlternatif">ID Alternatif</label>
-                    <input type="text" id="idAlternatif" name="idAlternatif" required readonly="on" value="<?php echo $altObj->getNewID(); ?>">
+                    <input type="text" style="outline: none;" id="idAlternatif" name="idAlternatif" required readonly="on" value="<?php echo $altObj->getNewID(); ?>">
                 </div>
                 <div class="input">
                     <label for="nip">Nomor Induk Guru</label>
-                    <input type="text" id="nip" name="nip" required>
+                    <input type="text" id="nip" name="nip" required autofocus>
                 </div>
                 <div class="input">
                     <label for="namaLengkap">Nama Lengkap</label>

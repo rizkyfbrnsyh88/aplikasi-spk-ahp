@@ -1,5 +1,5 @@
 <?php
-class Nilai
+class NilaiPreferensi
 {
 	private $conn;
 	private $table_name = "nilai_preferensi";
