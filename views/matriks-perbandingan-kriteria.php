@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include '../includes/sidebar.inc.php';
 
 include '../includes/bobot.inc.php';
@@ -49,7 +50,7 @@ if (isset($_POST['submit'])) {
 if (isset($_POST['hapus'])) {
     $bobotObj->delete();
     ob_end_clean();
-    header("location: analisa-kriteria.php");
+    header("location: perbandingan-kriteria.php");
 }
 
 
@@ -67,6 +68,15 @@ if (isset($_POST['hapus'])) {
                 <i class="fa-solid fa-user icon"></i>
                 <h2>Perbandingan Kriteria</h2>
             </div>
+            <form method="post">
+                <div class="btn-judul">
+                    <div class="btn-hapus">
+                        <button type="submit" name="hapus">
+                            <i class="fa-solid fa-eraser"></i><span>Hapus Semua</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="tabel">
             <table>
@@ -83,7 +93,7 @@ if (isset($_POST['hapus'])) {
                     <?php $bobots2 = $bobotObj->readAll2();
                     while ($baris = $bobots2->fetch(PDO::FETCH_ASSOC)) : ?>
                         <tr>
-                            <th class="active"><?= $baris['nama_kriteria'] ?></th>
+                            <th><?= $baris['nama_kriteria'] ?></th>
                             <?php $bobots3 = $bobotObj->readAll2();
                             while ($kolom = $bobots3->fetch(PDO::FETCH_ASSOC)) : ?>
                                 <td>

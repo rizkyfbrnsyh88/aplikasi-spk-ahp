@@ -66,7 +66,7 @@ while ($row = $kriterias->fetch(PDO::FETCH_ASSOC)) {
                                 </div>
                                 <div class="kotak-input">
                                     <div class="kotak-isi">
-                                        <select class="kri" name="nl<?= $no ?>">
+                                        <select class="kri colbox" name="nl<?= $no ?>">
                                             <?php $rows = $nilaiObj->readAll();
                                             while ($row = $rows->fetch(PDO::FETCH_ASSOC)) : ?>
                                                 <option value="<?= $row['jum_nilai'] ?>"><?= $row['jum_nilai'] ?> - <?= $row['ket_nilai'] ?></option>
@@ -92,7 +92,7 @@ while ($row = $kriterias->fetch(PDO::FETCH_ASSOC)) {
                 <?php endforeach; ?>
                 <div class="btn-input">
                     <div class="btn-simpan">
-                        <button type="submit">
+                        <button type="submit" name="submit">
                             <i class="fa-solid fa-next"></i><span>Selanjutnya</span>
                         </button>
                     </div>

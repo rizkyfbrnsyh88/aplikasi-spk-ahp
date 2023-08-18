@@ -55,7 +55,7 @@ class Alternatif
 
 	function readByFilter()
 	{
-		$query = "SELECT * FROM {$this->table_name} a JOIN nilai_awal b ON a.id_alternatif=b.id_alternatif WHERE b.keterangan='B'";
+		$query = "SELECT * FROM {$this->table_name} a JOIN penilaian_alternatif b ON a.id_alternatif=b.id_alternatif WHERE b.keterangan='B'";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
 
@@ -64,7 +64,7 @@ class Alternatif
 
 	function countByFilter()
 	{
-		$query = "SELECT * FROM {$this->table_name} a JOIN nilai_awal b ON a.id_alternatif=b.id_alternatif WHERE b.keterangan='B' ";
+		$query = "SELECT * FROM {$this->table_name} a JOIN penilaian_alternatif b ON a.id_alternatif=b.id_alternatif WHERE b.keterangan='B' ";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
 
@@ -75,8 +75,8 @@ class Alternatif
 	{
 		$query = "SELECT *, b.nilai, b.keterangan
 				FROM {$this->table_name} a
-					JOIN nilai_awal b ON a.id_alternatif=b.id_alternatif
-				WHERE a.id_alternatif IN (SELECT id_alternatif FROM nilai_awal)
+					JOIN penilaian_alternatif b ON a.id_alternatif=b.id_alternatif
+				WHERE a.id_alternatif IN (SELECT id_alternatif FROM penilaian_alternatif)
 				ORDER BY a.id_alternatif";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
@@ -88,7 +88,7 @@ class Alternatif
 	{
 		$query = "SELECT *
 				FROM {$this->table_name} a
-					JOIN nilai_awal b ON a.id_alternatif=b.id_alternatif
+					JOIN penilaian_alternatif b ON a.id_alternatif=b.id_alternatif
 				WHERE b.keterangan='B'
 					AND b.periode=?
 				ORDER BY hasil_akhir DESC

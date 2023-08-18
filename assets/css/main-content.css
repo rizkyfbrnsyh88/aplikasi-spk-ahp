@@ -108,10 +108,6 @@ button{
     transition: all ease-in .2s;
 }
 
-.tabel{
-  border: 5px solid red;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -205,6 +201,15 @@ table {
   .btn-aksi .btn-aksi-edit a:hover, .btn-aksi .btn-aksi-detail a:hover{
     background-color: green;
     transition: all ease-in .2s;
+  }
+
+  .main-content .content .box-input .pilih-kriteria{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 240px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
   }
 
 
