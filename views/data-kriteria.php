@@ -50,9 +50,9 @@ if (isset($_POST['hapus-contengan'])) {
                 </div>
                 <div class="btn-judul">
                     <div class="btn-hapus">
-                        <button type="button" name="cetak" onclick="location.href='cetak-kriteria.php'">
+                        <a href="cetak-kriteria.php" name="cetak" onclick="NewWindow(this.href,'name','840','1070','yes')" target="_blank">
                             <i class="fa-solid fa-print"></i><span>Cetak</span>
-                        </button>
+                        </a>
                     </div>
                     <div class="btn-hapus">
                         <button type="submit" name="hapus-contengan">

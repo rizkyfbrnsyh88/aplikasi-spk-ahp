@@ -32,7 +32,7 @@ if (isset($_POST['reset'])) {
         </div>
         <div class="judul-content">
             <div class="text-judul">
-                <i class="fa-solid fa-user icon"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
                 <h2>Hasil Akhir</h2>
             </div>
             <form method="post">

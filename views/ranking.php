@@ -25,19 +25,19 @@ $stmtx2y = $ranObj->readBob();
         </div>
         <div class="judul-content">
             <div class="text-judul">
-                <i class="fa-solid fa-user icon"></i>
+                <i class="fa-solid fa-ranking-star"></i>
                 <h2>Hasil Ranking</h2>
             </div>
             <div class="btn-judul">
                 <div class="btn-hapus">
-                    <button type="button" name="cetak" onclick="location.href='cetak-ranking.php'">
+                    <a href="cetak-ranking.php" name="cetak" onclick="NewWindow(this.href,'name','840','1070','yes')" target="_blank">
                         <i class="fa-solid fa-print"></i><span>Cetak</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="box-ranking">
-            <?php for ($i = 2020; $i <= 2030; $i++) : ?>
+            <?php for ($i = 2020; $i <= 2020; $i++) : ?>
                 <h4>Tahun <?= $i ?></h4>
                 <table>
                     <thead>

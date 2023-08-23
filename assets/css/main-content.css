@@ -74,6 +74,7 @@
 .main-content .content .btn-judul{
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 button{
@@ -81,7 +82,7 @@ button{
     border: none;
 }
 
-.main-content .content .btn-judul .btn-hapus button, .btn-input .btn-simpan button, .btn-input .btn-next button{
+.main-content .content .btn-judul .btn-hapus button, .btn-input .btn-simpan button, .btn-input .btn-next button, .main-content .content .btn-judul .btn-hapus a{
     background-color: var(--secondcolor);
     padding: 15px 20px;
     cursor: pointer;
@@ -104,7 +105,7 @@ button{
     
 }
 
-.main-content .content .btn-judul button:hover, .btn-input .btn-simpan button:hover, .btn-input .btn-kembali button:hover, .btn-input .btn-next button:hover{
+.main-content .content .btn-judul button:hover, .btn-input .btn-simpan button:hover, .btn-input .btn-kembali button:hover, .btn-input .btn-next button:hover, .main-content .content .btn-judul .btn-hapus a:hover{
     background-color: red;
     transition: all ease-in .2s;
 }
