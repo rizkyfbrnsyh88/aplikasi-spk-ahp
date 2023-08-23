@@ -29,6 +29,7 @@
     padding: 50px;
     box-sizing: border-box;
     background-color: rgb(233, 233, 233);
+    margin-bottom: 30px;
 }
 
 .main-content .content .header h1{
@@ -80,7 +81,7 @@ button{
     border: none;
 }
 
-.main-content .content .btn-judul .btn-hapus button, .btn-input .btn-simpan button{
+.main-content .content .btn-judul .btn-hapus button, .btn-input .btn-simpan button, .btn-input .btn-next button{
     background-color: var(--secondcolor);
     padding: 15px 20px;
     cursor: pointer;
@@ -103,7 +104,7 @@ button{
     
 }
 
-.main-content .content .btn-judul button:hover, .btn-input .btn-simpan button:hover, .btn-input .btn-kembali button:hover{
+.main-content .content .btn-judul button:hover, .btn-input .btn-simpan button:hover, .btn-input .btn-kembali button:hover, .btn-input .btn-next button:hover{
     background-color: red;
     transition: all ease-in .2s;
 }
@@ -113,6 +114,7 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     font-size: 14px;
+    text-align: center;
   }
   th, td {
     padding: 10px;
@@ -131,7 +133,6 @@ table {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: var(--borderset);
     padding: 15px;
     box-sizing: border-box;
     margin-top: 20px;
@@ -140,6 +141,8 @@ table {
 
   .main-content .content .box-input .row{
     display: flex;
+    gap: 10px;
+    box-sizing: border-box;
   }
 
   .main-content .content .box-input .kotak-input{
@@ -147,7 +150,7 @@ table {
   }
 
   .main-content .content .box-input .kotak-isi{
-    width: 90%;
+    width: 100%;
   }
 
   .main-content .content .box-input .kotak-input .kri{
@@ -209,7 +212,32 @@ table {
     align-items: center;
     gap: 240px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #000;
+  }
+  .main-content .content .judul-hasilAkhir{
+    margin-top: 30px;
+  }
+
+  /* info dashboard */
+  .main-content .content .box-info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 0 20px 20px 20px;
+  }
+
+  .main-content .content .box-info .kategori-judul{
+    padding: 10px;
+    background-color: var(--colortitle);
+  }
+
+  .main-content .content .box-info .kategori-konten{
+    padding: 10px 30px 10px 30px;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+
+  .main-content .content .box-ranking h4{
+    margin-top: 30px;
   }
 
 

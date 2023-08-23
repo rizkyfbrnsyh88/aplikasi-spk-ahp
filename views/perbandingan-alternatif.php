@@ -46,7 +46,7 @@ array_splice($nid, $ne, 1);
         </div>
         <div class="judul-content">
             <div class="text-judul">
-                <i class="fa-solid fa-user icon"></i>
+                <i class="fa-solid fa-code-compare icon"></i>
                 <h2>Perbandingan Alternatif</h2>
             </div>
         </div>
@@ -94,13 +94,13 @@ array_splice($nid, $ne, 1);
             <div class="box-input">
                 <div class="pilih-kriteria">
                     <div class="row">
-                        <div class="kotak-pilih" style="width: 200px;">
+                        <div class="kotak-pilih" style="width: 100px;">
                             <label>Pilih Kriteria :</label>
                         </div>
                     </div>
                     <div class="kotak-input" style="width: 100%;">
                         <div class="kotak-isi">
-                            <select style="width: 100%;" class="kri" id="kriteria" name="kriteria">
+                            <select style="width: 100%;" class="kri" id="kriteria" name="kriteria" autofocus>
                                 <?php $kri2 = $kriObj->readAll();
                                 while ($row = $kri2->fetch(PDO::FETCH_ASSOC)) : ?>
                                     <option value="<?= $row['id_kriteria'] ?>"><?= $row['nama_kriteria'] ?></option>
@@ -164,7 +164,7 @@ array_splice($nid, $ne, 1);
                 <div class="btn-input">
                     <div class="btn-simpan">
                         <button type="submit" name="submit">
-                            <i class="fa-solid fa-floppy-disk"></i><span>Selanjutnya</span>
+                            <span>Selanjutnya</span><i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
                 </div>

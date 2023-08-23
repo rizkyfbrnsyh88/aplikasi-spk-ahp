@@ -81,11 +81,13 @@ if (isset($_POST['hapus'])) {
         <div class="navigasi">
             <a href="dashboard.php">Dashboard</a>
             <span>/</span>
-            <span>Perbandingan Kriteria</span>
+            <a href="perbandingan-alternatif.php">Perbandingan Alternatif</a>
+            <span>/</span>
+            <span>Matriks Perbandingan Kriteria</span>
         </div>
         <div class="judul-content">
             <div class="text-judul">
-                <i class="fa-solid fa-user icon"></i>
+                <i class="fa-solid fa-code-compare icon"></i>
                 <h2>Perbandingan Kriteria</h2>
             </div>
             <form method="post">
@@ -98,7 +100,7 @@ if (isset($_POST['hapus'])) {
                 </div>
             </form>
         </div>
-        <table width="100%" class="table table-striped table-bordered">
+        <table>
             <thead>
                 <tr>
                     <th><?= $skoObj->kri ?></th>
@@ -112,7 +114,7 @@ if (isset($_POST['hapus'])) {
                 <?php $alt2a = $altObj->readByFilter();
                 while ($baris = $alt2a->fetch(PDO::FETCH_ASSOC)) : ?>
                     <tr>
-                        <th class="active"><?= $baris['nama'] ?></th>
+                        <th><?= $baris['nama'] ?></th>
                         <?php $alt3a = $altObj->readByFilter();
                         while ($kolom = $alt3a->fetch(PDO::FETCH_ASSOC)) : ?>
                             <td>
@@ -133,7 +135,7 @@ if (isset($_POST['hapus'])) {
                 <?php endwhile; ?>
             </tbody>
             <tfoot>
-                <tr class="info">
+                <tr>
                     <th>Jumlah</th>
                     <?php /*$jumlahBobot=[];*/ $alt4a = $altObj->readByFilter();
                     while ($row = $alt4a->fetch(PDO::FETCH_ASSOC)) : ?>
@@ -152,7 +154,7 @@ if (isset($_POST['hapus'])) {
             </tfoot>
         </table>
 
-        <table width="100%" class="table table-striped table-bordered">
+        <table>
             <thead>
                 <tr>
                     <th>Perbandingan</th>
@@ -160,14 +162,14 @@ if (isset($_POST['hapus'])) {
                     while ($row = $alt1b->fetch(PDO::FETCH_ASSOC)) : ?>
                         <th><?= $row['nama'] ?></th>
                     <?php endwhile; ?>
-                    <th class="success">Prioritas</th>
+                    <th>Prioritas</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $alt2b = $altObj->readByFilter();
                 while ($baris = $alt2b->fetch(PDO::FETCH_ASSOC)) : ?>
                     <tr>
-                        <th class="active"><?= $baris['nama'] ?></th>
+                        <th><?= $baris['nama'] ?></th>
                         <?php $alt3b = $altObj->readByFilter();
                         while ($kolom = $alt3b->fetch(PDO::FETCH_ASSOC)) : ?>
                             <td>
@@ -188,7 +190,7 @@ if (isset($_POST['hapus'])) {
                                 ?>
                             </td>
                         <?php endwhile; ?>
-                        <th class="success">
+                        <th>
                             <?php
                             $skoObj->readAvg($baris['id_alternatif']);
                             $prioritas = $skoObj->hak;
@@ -200,6 +202,13 @@ if (isset($_POST['hapus'])) {
                 <?php endwhile; ?>
             </tbody>
         </table>
+        <div class="btn-input">
+            <div class="btn-next">
+                <button type="button" name="next" onclick="location.href='perbandingan-alternatif.php'">
+                    <span>Selanjutnya</span><i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
 
         <?php
         include '../includes/footer.inc.php';

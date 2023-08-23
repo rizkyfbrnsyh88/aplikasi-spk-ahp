@@ -61,11 +61,13 @@ if (isset($_POST['hapus'])) {
         <div class="navigasi">
             <a href="dashboard.php">Dashboard</a>
             <span>/</span>
-            <span>Perbandingan Kriteria</span>
+            <a href="perbandingan-kriteria.php">Perbandingan Kriteria</a>
+            <span>/</span>
+            <span>Matriks Perbandingan Kriteria</span>
         </div>
         <div class="judul-content">
             <div class="text-judul">
-                <i class="fa-solid fa-user icon"></i>
+                <i class="fa-solid fa-code-compare icon"></i>
                 <h2>Perbandingan Kriteria</h2>
             </div>
             <form method="post">
@@ -97,26 +99,28 @@ if (isset($_POST['hapus'])) {
                             <?php $bobots3 = $bobotObj->readAll2();
                             while ($kolom = $bobots3->fetch(PDO::FETCH_ASSOC)) : ?>
                                 <td>
-                                    <?php
-                                    if ($baris['id_kriteria'] == $kolom['id_kriteria']) {
-                                        echo '1';
-                                        if ($bobotObj->insert($baris['id_kriteria'], '1', $kolom['id_kriteria'])) {
-                                            // ...
+                                    <?php if (isset($_POST['submit'])) : ?>
+                                        <?php
+                                        if ($baris['id_kriteria'] == $kolom['id_kriteria']) {
+                                            echo $nilaiDefault = '1';
+                                            if ($bobotObj->insert($baris['id_kriteria'], $nilaiDefault, $kolom['id_kriteria'])) {
+                                                // ...
+                                            } else {
+                                                $bobotObj->update($baris['id_kriteria'], $nilaiDefault, $kolom['id_kriteria']);
+                                            }
                                         } else {
-                                            $bobotObj->update($baris['id_kriteria'], '1', $kolom['id_kriteria']);
+                                            $bobotObj->readAll1($baris['id_kriteria'], $kolom['id_kriteria']);
+                                            echo number_format($bobotObj->kp, 4, '.', ',');
                                         }
-                                    } else {
-                                        $bobotObj->readAll1($baris['id_kriteria'], $kolom['id_kriteria']);
-                                        echo number_format($bobotObj->kp, 4, '.', ',');
-                                    }
-                                    ?>
+                                        ?>
+                                    <?php endif; ?>
                                 </td>
                             <?php endwhile; ?>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
                 <tfoot>
-                    <tr class="info">
+                    <tr>
                         <th>Jumlah</th>
                         <?php $stmt5 = $bobotObj->readAll2();
                         while ($row = $stmt5->fetch(PDO::FETCH_ASSOC)) : ?>
@@ -132,7 +136,7 @@ if (isset($_POST['hapus'])) {
                 </tfoot>
             </table>
 
-            <table width="100%" class="table table-striped table-bordered">
+            <table>
                 <thead>
                     <tr>
                         <th>Perbandingan</th>
@@ -140,15 +144,15 @@ if (isset($_POST['hapus'])) {
                         while ($row2x = $bobots1x->fetch(PDO::FETCH_ASSOC)) : ?>
                             <th><?= $row2x['nama_kriteria'] ?></th>
                         <?php endwhile; ?>
-                        <th class="info">Jumlah</th>
-                        <th class="success">Prioritas</th>
+                        <th>Jumlah</th>
+                        <th>Prioritas</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $bobots2x = $bobotObj->readAll2();
                     while ($baris = $bobots2x->fetch(PDO::FETCH_ASSOC)) : ?>
                         <tr>
-                            <th class="active"><?= $baris['nama_kriteria'] ?></th>
+                            <th><?= $baris['nama_kriteria'] ?></th>
                             <?php $stmt4x = $bobotObj->readAll2();
                             while ($kolom = $stmt4x->fetch(PDO::FETCH_ASSOC)) : ?>
                                 <td>
@@ -166,14 +170,14 @@ if (isset($_POST['hapus'])) {
                                     ?>
                                 </td>
                             <?php endwhile; ?>
-                            <th class="info">
+                            <th>
                                 <?php
                                 $bobotObj->readSum2($baris['id_kriteria']);
                                 $j = $bobotObj->hak;
                                 echo number_format($j, 4, '.', ',');
                                 ?>
                             </th>
-                            <th class="success">
+                            <th>
                                 <?php
                                 $bobotObj->readAvg($baris['id_kriteria']);
                                 $b = $bobotObj->hak;
@@ -186,7 +190,7 @@ if (isset($_POST['hapus'])) {
                 </tbody>
             </table>
 
-            <table width="100%" class="table table-striped table-bordered">
+            <table>
                 <thead>
                     <tr>
                         <th>Penjumlahan</th>
@@ -194,7 +198,7 @@ if (isset($_POST['hapus'])) {
                         while ($row = $bobots1y->fetch(PDO::FETCH_ASSOC)) : ?>
                             <th><?= $row['nama_kriteria'] ?></th>
                         <?php endwhile; ?>
-                        <th class="info">Jumlah</th>
+                        <th>Jumlah</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -202,7 +206,7 @@ if (isset($_POST['hapus'])) {
                     $bobots2y = $bobotObj->readAll2();
                     while ($baris = $bobots2y->fetch(PDO::FETCH_ASSOC)) : ?>
                         <tr>
-                            <th class="active"><?= $baris['nama_kriteria'] ?></th>
+                            <th><?= $baris['nama_kriteria'] ?></th>
                             <?php $jumlah = 0;
                             $bobots3y = $bobotObj->readAll2();
                             while ($kolom = $bobots3y->fetch(PDO::FETCH_ASSOC)) : ?>
@@ -221,7 +225,7 @@ if (isset($_POST['hapus'])) {
                                     ?>
                                 </td>
                             <?php endwhile; ?>
-                            <th class="info">
+                            <th>
                                 <?php
                                 $sumRow[$baris['id_kriteria']] = $jumlah;
                                 echo number_format($jumlah, 4, '.', ',');
@@ -232,13 +236,13 @@ if (isset($_POST['hapus'])) {
                 </tbody>
             </table>
 
-            <table width="100%" class="table table-striped table-bordered">
+            <table>
                 <thead>
                     <tr>
                         <th>Rasio Konsistensi</th>
-                        <th class="info">Jumlah</th>
-                        <th class="success">Prioritas</th>
-                        <th class="warning">Hasil</th>
+                        <th>Jumlah</th>
+                        <th>Prioritas</th>
+                        <th>Hasil</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -246,17 +250,17 @@ if (isset($_POST['hapus'])) {
                     $bobots1z = $bobotObj->readAll2();
                     while ($row1 = $bobots1z->fetch(PDO::FETCH_ASSOC)) : ?>
                         <tr>
-                            <th class="active"><?= $row1["nama_kriteria"] ?></th>
-                            <th class="info"><?= number_format($sumRow[$row1["id_kriteria"]], 4, '.', ',') ?></th>
-                            <th class="success"><?= number_format($row1["bobot_kriteria"], 4, '.', ','); ?></th>
+                            <th><?= $row1["nama_kriteria"] ?></th>
+                            <th><?= number_format($sumRow[$row1["id_kriteria"]], 4, '.', ',') ?></th>
+                            <th><?= number_format($row1["bobot_kriteria"], 4, '.', ','); ?></th>
                             <?php $jumlah = $sumRow[$row1["id_kriteria"]] + $row1["bobot_kriteria"]; ?>
-                            <th class="warning"><?= number_format($jumlah, 4, '.', ','); ?></th>
+                            <th><?= number_format($jumlah, 4, '.', ','); ?></th>
                             <?php $total += $jumlah; ?>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
                 <tfoot>
-                    <tr class="danger">
+                    <tr>
                         <th colspan="3">Rata-rata</th>
                         <th><?php $rata = $total / $count;
                             echo number_format($rata, 4, '.', ','); ?></th>
@@ -264,7 +268,7 @@ if (isset($_POST['hapus'])) {
                 </tfoot>
             </table>
 
-            <table width="100%" class="table table-striped table-bordered">
+            <table>
                 <tbody>
                     <tr>
                         <th>N (kriteria)</th>
@@ -290,6 +294,13 @@ if (isset($_POST['hapus'])) {
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="btn-input">
+            <div class="btn-next">
+                <button type="button" name="next" onclick="location.href='perbandingan-alternatif.php'">
+                    <span>Selanjutnya</span><i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
 
         <?php

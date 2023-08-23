@@ -29,11 +29,13 @@ while ($row = $kriterias->fetch(PDO::FETCH_ASSOC)) {
             <a href="dashboard.php">Dashboard</a>
             <span>/</span>
             <span>Perbandingan Kriteria</span>
+            <span>/</span>
+            <a href="matriks-perbandingan-kriteria.php">Matriks Perbandingan Kriteria</a>
         </div>
         <form method="post" action="matriks-perbandingan-kriteria.php">
             <div class="judul-content">
                 <div class="text-judul">
-                    <i class="fa-solid fa-user icon"></i>
+                    <i class="fa-solid fa-code-compare icon"></i>
                     <h2>Perbandingan Kriteria</h2>
                 </div>
             </div>
@@ -91,9 +93,9 @@ while ($row = $kriterias->fetch(PDO::FETCH_ASSOC)) {
                     <?php endfor; ?>
                 <?php endforeach; ?>
                 <div class="btn-input">
-                    <div class="btn-simpan">
+                    <div class="btn-next">
                         <button type="submit" name="submit">
-                            <i class="fa-solid fa-next"></i><span>Selanjutnya</span>
+                            <span>Selanjutnya</span><i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
                 </div>

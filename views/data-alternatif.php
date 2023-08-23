@@ -51,8 +51,13 @@ if (isset($_POST['hapus-contengan'])) {
                 </div>
                 <div class="btn-judul">
                     <div class="btn-hapus">
+                        <button type="button" name="cetak" onclick="location.href='cetak-alternatif.php'">
+                            <i class="fa-solid fa-print"></i><span>Cetak</span>
+                        </button>
+                    </div>
+                    <div class="btn-hapus">
                         <button type="submit" name="hapus-contengan">
-                            <i class="fa-solid fa-eraser"></i><span>Hapus</span>
+                            <i class="fa-solid fa-eraser"></i><span>Hapus Banyak</span>
                         </button>
                     </div>
                     <div class="btn-tambah">
@@ -99,7 +104,7 @@ if (isset($_POST['hapus-contengan'])) {
                                     if ($nilObj->id) : ?>
                                         <?= $nilObj->nilai ?> (<?= $nilObj->keterangan ?>)
                                     <?php else : ?>
-                                        <span class="label label-danger">Belum</span>
+                                        <span>Belum</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>

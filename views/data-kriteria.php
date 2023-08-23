@@ -50,8 +50,13 @@ if (isset($_POST['hapus-contengan'])) {
                 </div>
                 <div class="btn-judul">
                     <div class="btn-hapus">
+                        <button type="button" name="cetak" onclick="location.href='cetak-kriteria.php'">
+                            <i class="fa-solid fa-print"></i><span>Cetak</span>
+                        </button>
+                    </div>
+                    <div class="btn-hapus">
                         <button type="submit" name="hapus-contengan">
-                            <i class="fa-solid fa-eraser"></i><span>Hapus</span>
+                            <i class="fa-solid fa-eraser"></i><span>Hapus Banyak</span>
                         </button>
                     </div>
                     <div class="btn-tambah">
@@ -76,10 +81,10 @@ if (isset($_POST['hapus-contengan'])) {
                         <?php $no = 1;
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) :  ?>
                             <tr>
-                                <td style="vertical-align:middle;"><input type="checkbox" value="<?php echo $row['id_kriteria'] ?>" name="checkbox[]" /></td>
-                                <td style="vertical-align:middle;"><?php echo $row['id_kriteria'] ?></td>
-                                <td style="vertical-align:middle;"><?php echo $row['nama_kriteria'] ?></td>
-                                <td style="vertical-align:middle;"><?php echo $row['bobot_kriteria'] ?></td>
+                                <td><input type="checkbox" value="<?php echo $row['id_kriteria'] ?>" name="checkbox[]" /></td>
+                                <td><?php echo $row['id_kriteria'] ?></td>
+                                <td><?php echo $row['nama_kriteria'] ?></td>
+                                <td><?php echo $row['bobot_kriteria'] ?></td>
                                 <td>
                                     <div class="btn-aksi">
                                         <div class="btn-aksi-edit">

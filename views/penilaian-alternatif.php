@@ -60,7 +60,7 @@ if (isset($_POST['hapus-contengan'])) {
                 <div class="btn-judul">
                     <div class="btn-hapus">
                         <button type="submit" name="hapus-contengan">
-                            <i class="fa-solid fa-eraser"></i><span>Hapus</span>
+                            <i class="fa-solid fa-eraser"></i><span>Hapus Banyak</span>
                         </button>
                     </div>
                     <div class="btn-tambah">

@@ -22,6 +22,7 @@ $db = $config->getConnection();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="../assets/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../assets/js/script.js"></script>
 </head>
 
 <body>
@@ -60,14 +61,14 @@ $db = $config->getConnection();
                 <?php endif; ?>
                 <?php if ($_SESSION["level"] == "Penilai") : ?>
                     <div class="dropdown">
-                        <div class="item-menu">
+                        <div class="item-menu dropbtn" onclick="myFunction(1)">
                             <p>
                                 <i class="fa-solid fa-database icon"></i>
-                                <span>Data</span onclick="toggleDropdown()">
+                                <span>Data</span>
                                 <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
                             </p>
                         </div>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" id="dropdown-1">
                             <a href="../views/data-alternatif.php">Alternatif</a>
                             <a href="../views/data-kriteria.php">Kriteria</a>
                             <a href="../views/penilaian-alternatif.php">Nilai Awal</a>
@@ -76,14 +77,14 @@ $db = $config->getConnection();
                 <?php endif; ?>
                 <?php if ($_SESSION["level"] == "Penilai") : ?>
                     <div class="dropdown">
-                        <div class="item-menu" onclick="toggleDropdown()">
+                        <div class="item-menu dropbtn" onclick="myFunction(2)">
                             <p>
                                 <i class="fa-solid fa-code-compare icon"></i>
                                 <span>Perhitungan AHP</span>
                                 <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
                             </p>
                         </div>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" id="dropdown-2">
                             <a href="../views/perbandingan-kriteria.php">Perbandingan Kriteria</a>
                             <a href="../views/perbandingan-alternatif.php">Perbandingan Alternatif</a>
                         </div>
@@ -91,28 +92,28 @@ $db = $config->getConnection();
                 <?php endif; ?>
                 <?php if ($_SESSION["level"] == "Penilai" or $_SESSION["level"] == "Kepsek") : ?>
                     <div class="dropdown">
-                        <div class="item-menu" onclick="toggleDropdown()">
+                        <div class="item-menu dropbtn" onclick="myFunction(3)">
                             <p>
                                 <i class="fa-solid fa-file icon"></i>
                                 <span>Laporan</span>
                                 <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
                             </p>
                         </div>
-                        <div class="dropdown-menu">
-                            <a href="">Hasil Akhir</a>
-                            <a href="">Rangking</a>
+                        <div class="dropdown-menu" id="dropdown-3">
+                            <a href="../views/hasil-akhir.php">Hasil Akhir</a>
+                            <a href="../views/ranking.php">Ranking</a>
                         </div>
                     </div>
                 <?php endif; ?>
                 <div class="dropdown">
-                    <div class="item-menu" onclick="toggleDropdown()">
+                    <div class="item-menu dropbtn" onclick="myFunction(4)">
                         <p>
                             <i class="fa-solid fa-gear icon"></i>
                             <span>Pengaturan</span>
                             <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
                         </p>
                     </div>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="dropdown-4">
                         <?php if ($_SESSION["level"] == "TU") : ?>
                             <a href="../views/user.php">Kelola User</a>
                         <?php endif; ?>
@@ -121,3 +122,5 @@ $db = $config->getConnection();
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript" src="../assets/js/script.js"></script>

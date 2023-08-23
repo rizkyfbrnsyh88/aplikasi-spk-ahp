@@ -70,7 +70,7 @@ if ($_POST) {
         <form method="post">
             <div class="judul-content">
                 <div class="text-judul">
-                    <i class="fa-solid fa-user icon"></i>
+                    <i class="fa-solid fa-book icon"></i>
                     <h2>Tambah Data Penilaian Alternatif</h2>
                 </div>
             </div>
