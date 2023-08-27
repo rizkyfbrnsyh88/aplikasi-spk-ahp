@@ -43,14 +43,6 @@ $db = $config->getConnection();
                         <span>Dashboard</span>
                     </a>
                 </div>
-                <?php if ($_SESSION["level"] == "TU") : ?>
-                    <div class="item-menu">
-                        <a href="../views/data-alternatif.php">
-                            <i class="fa-solid fa-user icon"></i>
-                            <span>Pegawai</span>
-                        </a>
-                    </div>
-                <?php endif; ?>
                 <?php if ($_SESSION["level"] == "Penilai") : ?>
                     <div class="item-menu">
                         <a href="../views/nilai-preferensi.php">
@@ -59,7 +51,7 @@ $db = $config->getConnection();
                         </a>
                     </div>
                 <?php endif; ?>
-                <?php if ($_SESSION["level"] == "Penilai") : ?>
+                <?php if ($_SESSION["level"] == "Admin") : ?>
                     <div class="dropdown">
                         <div class="item-menu dropbtn" onclick="myFunction(1)">
                             <p>
@@ -71,7 +63,7 @@ $db = $config->getConnection();
                         <div class="dropdown-menu" id="dropdown-1">
                             <a href="../views/data-alternatif.php">Alternatif</a>
                             <a href="../views/data-kriteria.php">Kriteria</a>
-                            <a href="../views/penilaian-alternatif.php">Nilai Awal</a>
+                            <a href="../views/nilai-preferensi.php">Skala Dasar AHP</a>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -85,9 +77,34 @@ $db = $config->getConnection();
                             </p>
                         </div>
                         <div class="dropdown-menu" id="dropdown-2">
+                            <a href="../views/penilaian-alternatif.php">Penilaian Awal Alternatif</a>
                             <a href="../views/perbandingan-kriteria.php">Perbandingan Kriteria</a>
                             <a href="../views/perbandingan-alternatif.php">Perbandingan Alternatif</a>
                         </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($_SESSION["level"] == "Penilai") : ?>
+                    <div class="item-menu">
+                        <a href="../views/hasil-akhir.php">
+                            <i class="fa-regular fa-star-half-stroke icon"></i>
+                            <span>Hasil Akhir</span>
+                        </a>
+                    </div>
+                <?php endif; ?>
+                <?php if ($_SESSION["level"] == "Penilai") : ?>
+                    <div class="item-menu">
+                        <a href="../views/ranking.php">
+                            <i class="fa-solid fa-ranking-star icon"></i>
+                            <span>Ranking</span>
+                        </a>
+                    </div>
+                <?php endif; ?>
+                <?php if ($_SESSION["level"] == "Admin") : ?>
+                    <div class="item-menu">
+                        <a href="../views/user.php">
+                            <i class="fa-solid fa-users icon"></i>
+                            <span>Kelola User</span>
+                        </a>
                     </div>
                 <?php endif; ?>
                 <?php if ($_SESSION["level"] == "Penilai" or $_SESSION["level"] == "Kepsek") : ?>
@@ -100,23 +117,23 @@ $db = $config->getConnection();
                             </p>
                         </div>
                         <div class="dropdown-menu" id="dropdown-3">
-                            <a href="../views/hasil-akhir.php">Hasil Akhir</a>
-                            <a href="../views/ranking.php">Ranking</a>
+                            <?php if ($_SESSION["level"] == "kepsek") : ?>
+                                <a href="../views/cetak-alternatif.php" target="_blank">Alternatif</a>
+                                <a href="../views/cetak-kriteria.php" target="_blank">Kriteria</a>
+                            <?php endif; ?>
+                            <a href="../views/cetak-ranking.php" target="_blank">Ranking</a>
                         </div>
                     </div>
                 <?php endif; ?>
                 <div class="dropdown">
                     <div class="item-menu dropbtn" onclick="myFunction(4)">
                         <p>
-                            <i class="fa-solid fa-gear icon"></i>
-                            <span>Pengaturan</span>
+                            <i class="fa-solid fa-user icon"></i>
+                            <span><?php echo $_SESSION["nama_lengkap"] ?></span>
                             <i class="fa-solid fa-circle-chevron-down icon-dropdown"></i>
                         </p>
                     </div>
                     <div class="dropdown-menu" id="dropdown-4">
-                        <?php if ($_SESSION["level"] == "TU") : ?>
-                            <a href="../views/user.php">Kelola User</a>
-                        <?php endif; ?>
                         <a href="../views/logout.php">Logout</a>
                     </div>
                 </div>

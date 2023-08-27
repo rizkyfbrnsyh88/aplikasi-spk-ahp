@@ -83,12 +83,12 @@ if (isset($_POST['hapus'])) {
             <span>/</span>
             <a href="perbandingan-alternatif.php">Perbandingan Alternatif</a>
             <span>/</span>
-            <span>Matriks Perbandingan Kriteria</span>
+            <span>Matriks Perbandingan Alternatif</span>
         </div>
         <div class="judul-content">
             <div class="text-judul">
                 <i class="fa-solid fa-code-compare icon"></i>
-                <h2>Perbandingan Kriteria</h2>
+                <h2>Perbandingan Alternatif</h2>
             </div>
             <form method="post">
                 <div class="btn-judul">

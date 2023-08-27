@@ -75,10 +75,10 @@ if (isset($_POST['hapus-contengan'])) {
                     <tbody>
                         <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                             <tr>
-                                <td style="vertical-align:middle;"><input type="checkbox" value="<?php echo $row['id_pengguna'] ?>" name="checkbox[]" /></td>
-                                <td style="vertical-align:middle;"><?php echo $row['nama_lengkap'] ?></td>
-                                <td style="vertical-align:middle;"><?php echo $row['level'] ?></td>
-                                <td style="vertical-align:middle;"><?php echo $row['username'] ?></td>
+                                <td><input type="checkbox" value="<?php echo $row['id_pengguna'] ?>" name="checkbox[]" /></td>
+                                <td><?php echo $row['nama_lengkap'] ?></td>
+                                <td><?php echo $row['level'] ?></td>
+                                <td><?php echo $row['username'] ?></td>
                                 <td>
                                     <div class="btn-aksi">
                                         <div class="btn-aksi-edit">

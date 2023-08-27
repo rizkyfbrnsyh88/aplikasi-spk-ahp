@@ -22,7 +22,11 @@ $stmt5 = $pro5->readAll();
 <div class="main-content">
     <div class="content">
         <div class="header">
-            <h1>Selamat Datang!</h1>
+            <h1>Selamat Datang, <?php if ($_SESSION["level"] == "Kepsek") {
+                                    echo "Kepala Sekolah";
+                                } else {
+                                    echo $_SESSION["level"];
+                                }  ?>!</h1>
             <p>Sistem Pendukung Keputusan Pemilihan Guru Terbaik di SMP Segar Depok</p>
         </div>
         <div id="container2" style="min-width: 100%; height: 400px; margin: 0 auto"></div>

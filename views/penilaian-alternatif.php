@@ -86,7 +86,7 @@ if (isset($_POST['hapus-contengan'])) {
                         <?php $no = 1;
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                             <tr>
-                                <td><input type="checkbox" value="<?= $row['id_nilai_awal'] ?>" name="checkbox[]" /></td>
+                                <td><input type="checkbox" value="<?= $row['id_penilaian'] ?>" name="checkbox[]" /></td>
                                 <td><?= $row['id_alternatif'] ?></td>
                                 <td><?= $row['nilai'] ?></td>
                                 <td><?php

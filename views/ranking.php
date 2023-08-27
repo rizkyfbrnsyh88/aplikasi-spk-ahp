@@ -28,16 +28,9 @@ $stmtx2y = $ranObj->readBob();
                 <i class="fa-solid fa-ranking-star"></i>
                 <h2>Hasil Ranking</h2>
             </div>
-            <div class="btn-judul">
-                <div class="btn-hapus">
-                    <a href="cetak-ranking.php" name="cetak" onclick="NewWindow(this.href,'name','840','1070','yes')" target="_blank">
-                        <i class="fa-solid fa-print"></i><span>Cetak</span>
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="box-ranking">
-            <?php for ($i = 2020; $i <= 2020; $i++) : ?>
+            <?php for ($i = 2023; $i <= 2023; $i++) : ?>
                 <h4>Tahun <?= $i ?></h4>
                 <table>
                     <thead>

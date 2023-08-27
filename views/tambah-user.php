@@ -69,7 +69,7 @@ if ($_POST) {
                     <select name="level" id="level" required>
                         <option value="">-----</option>
                         <option value="Penilai">Penilai</option>
-                        <option value="TU">Tata Usaha</option>
+                        <option value="Admin">Tata Usaha</option>
                         <option value="Kepsek">Kepala Sekolah</option>
                     </select>
                 </div>

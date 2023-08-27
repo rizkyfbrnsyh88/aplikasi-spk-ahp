@@ -33,7 +33,7 @@
 }
 
 .main-content .content .header h1{
-    font-size: 60px;
+    font-size: 48px;
 }
 
 /* Output Konten */
@@ -118,8 +118,7 @@ table {
     text-align: center;
   }
   th, td {
-    padding: 10px;
-    text-align: left;
+    padding: 8px;
     border: 1px solid #ddd;
   }
   th {
@@ -226,15 +225,20 @@ table {
     padding: 0 20px 20px 20px;
   }
 
+  .main-content .content .box-info .box-kategori{
+    box-shadow: 2px 2px 5px var(--colortitle);
+    background-color: #fff;
+  }
+
   .main-content .content .box-info .kategori-judul{
     padding: 10px;
     background-color: var(--colortitle);
+    color: var(--colorbg);
   }
 
   .main-content .content .box-info .kategori-konten{
     padding: 10px 30px 10px 30px;
     box-sizing: border-box;
-    background-color: #fff;
   }
 
   .main-content .content .box-ranking h4{

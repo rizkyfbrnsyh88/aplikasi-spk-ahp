@@ -48,50 +48,60 @@ if (isset($_POST['hapus-contengan'])) {
                     <i class="fa-solid fa-book icon"></i>
                     <h2>Data Nilai Preferensi</h2>
                 </div>
-                <div class="btn-judul">
-                    <div class="btn-hapus">
-                        <button type="submit" name="hapus-contengan">
-                            <i class="fa-solid fa-eraser"></i><span>Hapus Banyak</span>
-                        </button>
+                <?php if ($_SESSION["level"] == "TU") : ?>
+                    <div class="btn-judul">
+                        <div class="btn-hapus">
+                            <button type="submit" name="hapus-contengan">
+                                <i class="fa-solid fa-eraser"></i><span>Hapus Banyak</span>
+                            </button>
+                        </div>
+                        <div class="btn-tambah">
+                            <button type="button" onclick="location.href='tambah-nilai-preferensi.php'">
+                                <i class="fa-solid fa-clone"></i><span>Tambah Data</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="btn-tambah">
-                        <button type="button" onclick="location.href='tambah-nilai-preferensi.php'">
-                            <i class="fa-solid fa-clone"></i><span>Tambah Data</span>
-                        </button>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
             <div class="tabel">
                 <table>
                     <thead>
                         <tr>
-                            <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
+                            <?php if ($_SESSION["level"] == "TU") : ?>
+                                <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
+                            <?php endif; ?>
                             <th>Nilai</th>
                             <th>Keterangan</th>
-                            <th width="100px">Aksi</th>
+                            <?php if ($_SESSION["level"] == "TU") : ?>
+                                <th width="100px">Aksi</th>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1;
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                             <tr>
-                                <td style="vertical-align:middle;"><input type="checkbox" value="<?php echo $row['id_nilai'] ?>" name="checkbox[]" /></td>
+                                <?php if ($_SESSION["level"] == "TU") : ?>
+                                    <td style="vertical-align:middle;"><input type="checkbox" value="<?php echo $row['id_nilai'] ?>" name="checkbox[]" /></td>
+                                <?php endif; ?>
                                 <td style="vertical-align:middle;"><?php echo $row['jum_nilai'] ?></td>
                                 <td style="vertical-align:middle;"><?php echo $row['ket_nilai'] ?></td>
-                                <td>
-                                    <div class="btn-aksi">
-                                        <div class="btn-aksi-edit">
-                                            <a href="ubah-nilai-preferensi.php?id=<?= $row['id_nilai'] ?>">
-                                                <i class="fa-solid fa-pencil"></i>
-                                            </a>
+                                <?php if ($_SESSION["level"] == "TU") : ?>
+                                    <td>
+                                        <div class="btn-aksi">
+                                            <div class="btn-aksi-edit">
+                                                <a href="ubah-nilai-preferensi.php?id=<?= $row['id_nilai'] ?>">
+                                                    <i class="fa-solid fa-pencil"></i>
+                                                </a>
+                                            </div>
+                                            <div class="btn-aksi-hapus">
+                                                <a href="hapus-nilai-preferensi.php?id=<?= $row['id_nilai'] ?>" onclick="return confirm('Yakin ingin menghapus data')">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="btn-aksi-hapus">
-                                            <a href="hapus-nilai-preferensi.php?id=<?= $row['id_nilai'] ?>" onclick="return confirm('Yakin ingin menghapus data')">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </td>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>

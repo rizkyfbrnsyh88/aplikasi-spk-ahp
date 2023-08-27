@@ -99,7 +99,7 @@
     cursor: pointer;
 }
 
-.sidebar .menus .item-menu a:hover .icon-dropdown{
+.sidebar .menus .item-menu:hover .icon-dropdown{
     transform: rotate(0deg);
     transition: all ease-in .3s;
 }
@@ -133,4 +133,31 @@
     background-color: var(--colortitle);
     transition: .3s linear;
     border-left: 10px solid var(--colorbg);
+}
+
+.sidebar .footer-side{
+    width: 100%;
+    padding: 20px 20px 30px 20px;
+}
+
+.sidebar .footer-side .item-menu a{
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    color: var(--colorbg);
+    background-color: var(--colortitle);
+}
+
+.sidebar .footer-side .item-menu .icon{
+    transform: rotate(180deg);
+    margin-right: 50px;
+    font-size: 24px;
+}
+
+.sidebar .footer-side .item-menu a:hover{
+    background-color: var(--colorbg);
+    color: var(--colortitle);
+    transition: all ease .3s;
 }

@@ -52,7 +52,7 @@ if ($_POST) {
                     <select name="level" id="level" required>
                         <option value="">-----</option>
                         <option value="Penilai" <?= ($eks->lvl == "Penilai") ? 'selected' : "" ?>>Penilai</option>
-                        <option value="TU" <?= ($eks->lvl == "TU") ? 'selected' : "" ?>>Tata Usaha</option>
+                        <option value="Admin" <?= ($eks->lvl == "Admin") ? 'selected' : "" ?>>Tata Usaha</option>
                         <option value="Kepsek" <?= ($eks->lvl == "Kepsek") ? 'selected' : "" ?>>Kepala Sekolah</option>
                     </select>
                 </div>
